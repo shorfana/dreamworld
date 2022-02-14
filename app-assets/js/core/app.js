@@ -489,11 +489,12 @@
   // main menu internationalization
 
   // init i18n and load language file
+  var base_url = window.location.origin + '/' + window.location.pathname.split ('/') [1] + '/';
   i18next.use(window.i18nextXHRBackend).init({
       debug: false,
       fallbackLng: "en",
       backend: {
-        loadPath: "../../../app-assets/data/locales/{{lng}}.json"
+        loadPath: base_url+"app-assets/data/locales/{{lng}}.json"
       },
       returnObjects: true
     },
