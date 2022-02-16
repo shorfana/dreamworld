@@ -8,18 +8,21 @@ class Dashboard extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('encryption');
-		// $this->load->model("Login_model");
+		$this->load->model("Login_model");
+		$this->load->library('form_validation');
+		$this->load->model("User_model");
+		$this->userId = $this->session->userdata("DW-userId");
+		$this->profileData = $this->User_model->myProfile($this->userId);
+		$this->role = $this->session->userdata("USF-hakAkses");
 		$this->data = array(
 			'header' => 'back/layout/header',
 			'navbar' => 'back/layout/navbar',
 			'sidebar' => 'back/layout/sidebar',
 			// 'sidebarActive' => '',
-			// 'myProfile' => $this->profileData,
+			'myProfile' => $this->profileData,
 			'content' => '',
 			'footer' => 'back/layout/footer',
 			'js' => 'back/layout/js',
-			// 'title' => 'back',
-			// 'tabTitle' => '',
 			'alert' => 'back/layout/alert'
 		);
 	}
@@ -28,12 +31,11 @@ class Dashboard extends CI_Controller
 	{
 		$data = $this->data;
 		$data['title'] = 'Dashboard';
-		// $data['tabTitle'] = 'USF | Dashboard';
-		// $data['sidebarActive'] = 'dashboard';
+		$data['tabTitle'] = 'DW | Dashboard';
+		$data['sidebarActive'] = 'dashboard';
 		$data['content'] = 'back/dashboard';
 		// $data['script'] = '';
-		// $data['role'] = $this->role;
+		$data['role'] = $this->role;
 		$this->load->view('back/index', $data);
-		// $this->load->view('dashboard');
 	}
 }

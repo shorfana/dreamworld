@@ -11,6 +11,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-12 col-sm-12">
                             <span class="mt-2">THIS IS FOR CONTENT</span>
+                            <!-- <?php var_dump($myProfile);?> -->
                         </div>
                     </div>
                 </section>

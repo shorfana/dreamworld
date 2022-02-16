@@ -10,7 +10,7 @@
                     </div>
                     <ul class="nav navbar-nav float-right">
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">John Doe</span><span class="user-status">Available</span></div><span><img class="round" src="<?php echo base_url() ?>app-assets/images/profile/user-uploads/default.png" onerror="this.onerror=null; this.src='<?php echo base_url();?>app-assets/images/profile/user-uploads/default.png'" alt="avatar" height="40" width="40"></span>
+                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600"><?php echo $myProfile->username;?></span><span class="user-status">Available</span></div><span><img class="round" src="<?php echo base_url() ?>app-assets/images/profile/user-uploads/default.png" onerror="this.onerror=null; this.src='<?php echo base_url();?>app-assets/images/profile/user-uploads/default.png'" alt="avatar" height="40" width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="page-user-profile.html"><i class="feather icon-user"></i> Edit Profile</a>
                             <!-- <a class="dropdown-item" href="app-email.html"><i class="feather icon-mail"></i> My Inbox</a>

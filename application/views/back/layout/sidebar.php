@@ -40,7 +40,7 @@
                 <li class=" navigation-header">
                     <span>Other</span>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-log-out"></i><span class="menu-title" data-i18n="Menu1">Logout</span></a>
+                <li class=" nav-item"><a href="<?php echo base_url()?>logout"><i class="feather icon-log-out"></i><span class="menu-title" data-i18n="Menu1">Logout</span></a>
                 </li>
             </ul>
         </div>
