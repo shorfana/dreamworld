@@ -35,7 +35,13 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>app-assets/css/plugins/tour/tour.css">
     <!-- END: Page CSS-->
 
+    
     <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>app-assets/css/pages/data-list-view.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>app-assets/vendors/css/file-uploaders/dropzone.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>app-assets/vendors/css/tables/datatable/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>app-assets/css/plugins/file-uploaders/dropzone.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/back/css/style.css">
     <!-- END: Custom CSS-->
 

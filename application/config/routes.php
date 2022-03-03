@@ -53,5 +53,9 @@ $route['default_controller'] = 'LandingPage';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+// $route['dashboard/simulasiBiaya'] = "simulasiBiaya";
+$route['kota'] = 'Kota/index';
+$route['hotel'] = 'Hotel/index';
+
 $route['logout'] = "login/logout";
 $route['forgotPassword/sendMail'] = "login/sendMail";

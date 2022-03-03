@@ -17,6 +17,17 @@
 <script src="<?php echo base_url() ?>app-assets/js/scripts/components.js"></script>
 <!-- END: Theme JS-->
 
+
 <!-- BEGIN: Page JS-->
+<script src="<?php echo base_url() ?>app-assets/js/scripts/ui/data-list-view.js"></script>
+<script src="<?php echo base_url() ?>app-assets/vendors/js/extensions/dropzone.min.js"></script>
+<script src="<?php echo base_url() ?>app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="<?php echo base_url() ?>app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+<script src="<?php echo base_url() ?>app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+<script src="<?php echo base_url() ?>app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>app-assets/vendors/js/tables/datatable/datatables.select.min.js"></script>
+<script src="<?php echo base_url() ?>app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+
+<script src="<?php echo base_url() ?>app-assets/js/scripts/datatables/datatable.js"></script>
 <!-- <script src="<?php echo base_url() ?>app-assets/js/scripts/pages/dashboard-analytics.js"></script> -->
 <!-- END: Page JS-->

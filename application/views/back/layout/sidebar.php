@@ -20,11 +20,24 @@
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" navigation-header">
-                    <span>Group Menu 1</span>
+                    <span>Main Menu</span>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Menu 1</span></a>
+                <!-- <li class=" nav-item"><a href="#"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Menu 1</span></a> -->
+                <li class=" nav-item"><a href="<?= base_url().'dashboard'?>"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Dashboard</span></a>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-list"></i><span class="menu-title" data-i18n="Menu2">Menu 2</span></a>
+                <li class=" nav-item"><a href="<?= base_url().'simulasiBiaya'?>"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Simulasi Biaya</span></a>
+                </li>
+                <li class=" navigation-header">
+                    <span>Olah Data</span>
+                </li>
+                <!-- <li class=" nav-item"><a href="#"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Menu 1</span></a> -->
+                <li class=" nav-item"><a href="<?= base_url().'hotel'?>"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Data Hotel</span></a>
+                </li>
+                <li class=" nav-item"><a href="<?= base_url().'kota'?>"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Data Kota</span></a>
+                </li>
+                <li class=" nav-item"><a href="<?= base_url().'kota'?>"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Pengaturan</span></a>
+                </li>
+                <!-- <li class=" nav-item"><a href="#"><i class="feather icon-list"></i><span class="menu-title" data-i18n="Menu2">Menu 2</span></a>
                     <ul class="menu-content">
                         <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="SubMenu1">Sub Menu 1</span></a>
                         </li>
@@ -36,7 +49,7 @@
                     <span>Group Menu 2</span>
                 </li>
                 <li class=" nav-item"><a href="#"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Menu 1</span></a>
-                </li>
+                </li> -->
                 <li class=" navigation-header">
                     <span>Other</span>
                 </li>

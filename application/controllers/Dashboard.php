@@ -7,24 +7,28 @@ class Dashboard extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->library('encryption');
-		$this->load->model("Login_model");
-		$this->load->library('form_validation');
-		$this->load->model("User_model");
-		$this->userId = $this->session->userdata("DW-userId");
-		$this->profileData = $this->User_model->myProfile($this->userId);
-		$this->role = $this->session->userdata("USF-hakAkses");
-		$this->data = array(
-			'header' => 'back/layout/header',
-			'navbar' => 'back/layout/navbar',
-			'sidebar' => 'back/layout/sidebar',
-			// 'sidebarActive' => '',
-			'myProfile' => $this->profileData,
-			'content' => '',
-			'footer' => 'back/layout/footer',
-			'js' => 'back/layout/js',
-			'alert' => 'back/layout/alert'
-		);
+		if ($this->session->userdata('DW-login') == false) {
+			redirect(base_url('login'));
+		} else {
+			$this->load->library('encryption');
+			$this->load->model("Login_model",'mLogin');
+			$this->load->library('form_validation');
+			$this->load->model("User_model",'mUser');
+			$this->userId = $this->session->userdata("DW-userId");
+			$this->profileData = $this->mUser->myProfile($this->userId);
+			$this->role = $this->session->userdata("USF-hakAkses");
+			$this->data = array(
+				'header' => 'back/layout/header',
+				'navbar' => 'back/layout/navbar',
+				'sidebar' => 'back/layout/sidebar',
+				// 'sidebarActive' => '',
+				'myProfile' => $this->profileData,
+				'content' => '',
+				'footer' => 'back/layout/footer',
+				'js' => 'back/layout/js',
+				'alert' => 'back/layout/alert'
+			);
+		}
 	}
 
 	public function index()
