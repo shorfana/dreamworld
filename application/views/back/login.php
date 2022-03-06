@@ -68,9 +68,9 @@
                                         <div class="card-content mb-2">
                                             <div class="card-body pt-1">
                                             <?php $this->load->view("back/layout/alert.php");?>
-                                                <form method="POST" action="<?php echo base_url('login/auth');?>">
+                                                <form method="POST" action="<?= base_url('login/auth');?>">
                                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                        <input type="text" class="form-control" id="usernameEmail" name="usernameEmail" placeholder="Username / E-Mail" required>
+                                                        <input type="text" class="form-control" id="usernameEmail" name="usernameEmail" placeholder="Username / E-Mail" required autofocus>
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
                                                         </div>

@@ -23,40 +23,104 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Zero configuration</h4>
+                            <!-- <h4 class="card-title">List kota</h4> -->
+                            <button class="btn btn-primary round waves-effect waves-light float-right" type="button" data-toggle="modal" data-target="#tambahDataKota"><i class="fa fa-plus"></i> Tambah Data Baru</button>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade text-left" id="tambahDataKota" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="myModalLabel1">Tambah Data Hotel</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <!-- <form method="POST" action="#"> -->
+                                    <div class="modal-body">
+                                        <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                            <input type="text" class="form-control" id="namaKota" name="namaKota" placeholder="Nama Kota" autofocus>
+                                            <div class="form-control-position">
+                                                <i class="fa fa-building"></i>
+                                            </div>
+                                            <label for="namaKota">Nama Kota</label>
+                                        </fieldset>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" id="btnSimpanKota" class="btn btn-primary" onclick="simpanKota()">Simpan</button>
+                                        <!-- data-dismiss="modal" -->
+                                    </div>
+                                    <!-- </form> -->
+                                </div>
+                            </div>
                         </div>
                         <div class="card-content">
+                            <?php
+                            foreach ($listKota as $lk) {
+                            ?>
+                                <!-- Modal Edit-->
+                                <div class="modal fade text-left" id="editData-<?= $lk->id_kota; ?>" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myModalLabel1">Ubah Data Hotel</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <!-- <form method="POST" action="#"> -->
+                                            <div class="modal-body">
+                                                <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                    <input type="text" class="form-control editNamaKota" id="editNamaKota-<?= $lk->id_kota ?>" placeholder="Nama Kota" value="<?= $lk->nama_kota ?>" autofocus>
+                                                    <div class="form-control-position">
+                                                        <i class="fa fa-building"></i>
+                                                    </div>
+                                                    <label for="namaKota">Nama Kota</label>
+                                                </fieldset>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" id="btnEditKota" class="btn btn-primary" onclick="ubahKota(<?= $lk->id_kota ?>)">Ubah</button>
+                                                <!-- data-dismiss="modal" -->
+                                            </div>
+                                            <!-- </form> -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal Hapus-->
+                                <div class="modal fade text-left" id="hapusData-<?= $lk->id_kota; ?>" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h6 class="modal-title" id="myModalLabel1">Kota <?= $lk->nama_kota?></h6>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4>Yakin Akan Menghapus Data Ini?</h4>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" id="btnHapusKota" class="btn btn-primary" onclick="hapusKota(<?= $lk->id_kota ?>)">Hapus</button>
+                                                <!-- data-dismiss="modal" -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+                            }
+                            ?>
                             <div class="card-body card-dashboard">
-                                <!-- <p class="card-text">
-                                    lorem ipsum
-                                </p> -->
                                 <div class="table-responsive">
-                                    <table class="table zero-configuration">
+                                    <table class="table zero-configuration text-center" id="tabelKota">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Nama Kota</th>
-                                                <th>Aksi</th>
+                                                <th class="text-left">No</th>
+                                                <th class="text-left">Nama Kota</th>
+                                                <th class="text-left">Aksi</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <?php
-                                            foreach ($listKota as $lk) {
-                                            ?>
-                                                <tr>
-                                                    <td><?= $lk->id_kota ?></td>
-                                                    <td><?= $lk->nama_kota ?></td>
-                                                    <td>
-                                                        <div class="row">
-                                                            <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editData-<?= $lk->id_kota; ?>"><i class="fa fa-pencil-square-o"></i></button>&nbsp;&nbsp;
-                                                            <button class="btn btn-danger btn-xs"  data-toggle="modal" data-target="#deleteData-<?= $lk->id_kota; ?>"><i class="fa fa-trash"></i></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            <?php
-                                            }
-                                            ?>
-                                        </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>No</th>

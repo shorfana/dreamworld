@@ -5,7 +5,7 @@
                 <li class="nav-item mr-auto">
                     <a class="navbar-brand" href="<?php echo base_url() ?>dashboard">
                         <div class="brand-logo"></div>
-                        <h2 class="brand-text mb-0 text-center">Dream<br>World</h2>
+                        <h6 class="brand-text mb-0 text-center">Dreamworld</h6><br>
                     </a>
                 </li>
                 <li class="nav-item nav-toggle">
@@ -22,38 +22,28 @@
                 <li class=" navigation-header">
                     <span>Main Menu</span>
                 </li>
-                <!-- <li class=" nav-item"><a href="#"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Menu 1</span></a> -->
-                <li class=" nav-item"><a href="<?= base_url().'dashboard'?>"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Dashboard</span></a>
+                <li class="nav-item <?= ($sidebarActive=='dashboard' ? 'active' : null)?>">
+                    <a href="<?= base_url() . 'dashboard' ?>"><i class="fa fa-tachometer fa-fw"></i>Dashboard</a>
                 </li>
-                <li class=" nav-item"><a href="<?= base_url().'simulasiBiaya'?>"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Simulasi Biaya</span></a>
+                <li class="nav-item <?= ($sidebarActive=='simulasiBiaya' ? 'active' : null)?>">
+                    <a href="<?= base_url() . 'simulasiBiaya' ?>"><i class="fa fa-calculator fa-fw"></i>Simulasi Biaya</a>
                 </li>
-                <li class=" navigation-header">
+                <li class="navigation-header">
                     <span>Olah Data</span>
                 </li>
-                <!-- <li class=" nav-item"><a href="#"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Menu 1</span></a> -->
-                <li class=" nav-item"><a href="<?= base_url().'hotel'?>"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Data Hotel</span></a>
+                <li class="nav-item <?= ($sidebarActive=='hotel' ? 'active' : null)?>">
+                    <a href="<?= base_url() . 'hotel' ?>"><i class="fa fa-hotel fa-fw"></i>Data Hotel</a>
                 </li>
-                <li class=" nav-item"><a href="<?= base_url().'kota'?>"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Data Kota</span></a>
+                <li class="nav-item <?= ($sidebarActive=='kota' ? 'active' : null)?>">
+                    <a href="<?= base_url() . 'kota' ?>"><i class="fa fa-building fa-fw"></i>Data Kota</a>
                 </li>
-                <li class=" nav-item"><a href="<?= base_url().'kota'?>"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Pengaturan</span></a>
+                <li class="nav-item <?= ($sidebarActive=='pengaturan' ? 'active' : null)?>">
+                    <a href="<?= base_url() . 'pengaturan' ?>"><i class="fa fa-wrench fa-fw fa-beat-fade" style="--fa-beat-fade-opacity: 0.5; --fa-beat-fade-scale: 1.5;" ></i>Pengaturan</a>
                 </li>
-                <!-- <li class=" nav-item"><a href="#"><i class="feather icon-list"></i><span class="menu-title" data-i18n="Menu2">Menu 2</span></a>
-                    <ul class="menu-content">
-                        <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="SubMenu1">Sub Menu 1</span></a>
-                        </li>
-                        <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="SubMenu2">Sub Menu 2</span></a>
-                        </li>
-                    </ul>
-                </li>
-                <li class=" navigation-header">
-                    <span>Group Menu 2</span>
-                </li>
-                <li class=" nav-item"><a href="#"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Menu1">Menu 1</span></a>
-                </li> -->
                 <li class=" navigation-header">
                     <span>Other</span>
                 </li>
-                <li class=" nav-item"><a href="<?php echo base_url()?>logout"><i class="feather icon-log-out"></i><span class="menu-title" data-i18n="Menu1">Logout</span></a>
+                <li class=" nav-item"><a href="<?php echo base_url() ?>logout"><i class="feather icon-log-out"></i>Logout</span></a>
                 </li>
             </ul>
         </div>
