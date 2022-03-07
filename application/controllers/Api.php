@@ -1,4 +1,7 @@
 <?php
+
+use LDAP\Result;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Api extends CI_Controller
@@ -11,8 +14,8 @@ class Api extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model("Login_model", 'mLogin');
         $this->load->model("User_model", 'mUser');
-        $this->load->model("Kota_model",'mKota');
-        $this->load->model("Hotel_model",'mHotel');
+        $this->load->model("Kota_model", 'mKota');
+        $this->load->model("Hotel_model", 'mHotel');
         $this->userId = $this->session->userdata("DW-userId");
         $this->profileData = $this->mUser->myProfile($this->userId);
         $this->role = $this->session->userdata("USF-hakAkses");
@@ -58,9 +61,6 @@ class Api extends CI_Controller
         } else {
             $idKota =  $this->input->post('idKota');
             $namaKota = $this->input->post('namaKota');
-            // $value = [
-            //     'nama_kota' => $this->input->post('namaKota'),
-            // ];
             $this->mKota->editKota($idKota, $namaKota);
         }
     }

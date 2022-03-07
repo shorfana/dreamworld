@@ -14,7 +14,7 @@
             }, {
                 data: null,
                 render: function(data, type, row) {
-                    return '<button class="btn btn-warning btn-xs btnEdit" id="btnEdit-' + data.id_kota + '" data-toggle="modal" data-target="#editData-' + data.id_kota + '" onclick="setFocus(' + data.id_kota + ')"><i class="fa fa-pencil-square-o"></i></button>&nbsp;&nbsp;<button class="btn btn-danger btn-xs hapusKota" id="btnHapus-' + data.id_kota + '" data-toggle="modal" data-target="#hapusData-' + data.id_kota + '"><i class="fa fa-trash"></i></button>';
+                    return '<button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modalEditKota" onclick="setEdit(' + data.id_kota + ',\'' + data.nama_kota + '\')"><i class="fa fa-pencil-square-o"></i></button>&nbsp;&nbsp;<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modalHapusKota" onclick="setHapus(' + data.id_kota + ',\'' + data.nama_kota + '\')"><i class="fa fa-trash"></i></button>';
                 }
             }]
         });
@@ -85,7 +85,6 @@
                         footer: '<a href="<?= base_url() . 'kota' ?>">Refresh</a>',
                         showConfirmButton: false,
                         confirmButtonClass: 'btn btn-primary',
-                        // timer: 1500,
                         buttonsStyling: false,
                     })
                 }
@@ -95,18 +94,24 @@
 
 
     // EDIT
-    function setFocus(id) {
-        $('#editData-' + id).on('shown.bs.modal', function() {
-            $("#editNamaKota-" + id).focus();
+    function setEdit(idKota,namaKota) {
+        $('#editNamaKota').val(namaKota);
+        $('#modalEditKota').on('shown.bs.modal', function() {
+            $("#editNamaKota").focus();
+        })
+        $("#editNamaKota").keyup(function(e) {
+            if (e.which == 13) {
+                ubahKota(idKota);
+            }
+        });
+        $('#btnEditKota').click(function() {
+            ubahKota(idKota);
         })
     }
 
     function ubahKota(idKota) {
-        var namaKota = $("#editNamaKota-" + idKota).val();
+        var namaKota = $("#editNamaKota").val();
         if (namaKota === null || namaKota.length === 0) {
-            $('#editData-' + idKota).on('shown.bs.modal', function() {
-                $("#editNamaKota-" + idKota).focus();
-            })
             Swal.fire({
                 type: 'warning',
                 title: 'Oops...',
@@ -141,7 +146,7 @@
                         buttonsStyling: false,
                         timer: 1500
                     })
-                    $('#editData-' + idKota).modal('hide');
+                    $('#modalEditKota').modal('hide');
                     $("#tabelKota").dataTable().fnDestroy();
                     loadKota();
                 },
@@ -154,7 +159,6 @@
                         footer: '<a href="<?= base_url() . 'kota' ?>">Refresh</a>',
                         showConfirmButton: false,
                         confirmButtonClass: 'btn btn-primary',
-                        // timer: 1500,
                         buttonsStyling: false,
                     })
                 }
@@ -163,6 +167,17 @@
     }
 
     // HAPUS
+
+    function setHapus(idKota,namaKota) {
+        $('#modalHapusKota').on('shown.bs.modal', function() {
+            $("#btnHapusKota").focus();
+        });
+        $("#headerHapusKota").text('Kota ' + namaKota)
+        $('#btnHapusKota').click(function() {
+            hapusKota(idKota);
+        });
+    }
+
     function hapusKota(idKota) {
         $.ajax({
             type: "POST",
@@ -187,7 +202,7 @@
                     buttonsStyling: false,
                     timer: 1500
                 })
-                $('#hapusData-' + idKota).modal('hide');
+                $('#modalHapusKota').modal('hide');
                 $("#tabelKota").dataTable().fnDestroy();
                 loadKota();
             },

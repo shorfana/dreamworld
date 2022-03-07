@@ -29,4 +29,5 @@ class Kota_model extends CI_Model
         $this->db->where('id_kota', $idKota);
         $this->db->delete('kota');
     }
+
 }
