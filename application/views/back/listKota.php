@@ -32,7 +32,7 @@
                             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title" id="headerTambahKota">Tambah Data Hotel</h4>
+                                        <h4 class="modal-title" id="headerTambahKota">Tambah Data Kota</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -62,7 +62,7 @@
                                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="headerEditKota">Ubah Data Hotel</h4>
+                                            <h4 class="modal-title" id="headerEditKota">Ubah Data Kota</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
