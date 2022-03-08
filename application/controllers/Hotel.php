@@ -34,26 +34,8 @@ class Hotel extends CI_Controller
         $data['tabTitle'] = 'DW | List Hotel';
         $data['sidebarActive'] = 'hotel';
         $data['content'] = 'back/listHotel';
+        $data['script'] = '../../assets/back/js/scrHotel';
         $data['role'] = $this->role;
         $this->load->view('back/index', $data);
-    }
-
-    public function editHotel($idHotel)
-    {
-        $data = $this->data;
-		$data['title'] = 'Edit Hotel';
-		$data['tabTitle'] = 'DW | Edit Hotel';
-		$data['sidebarActive'] = 'hotel';
-		$data['content'] = 'back/editKota';
-		$data['role'] = $this->role;
-		$this->load->view('back/index', $data);
-    }
-
-    public function updateHotel()
-    {
-    }
-
-    public function deleteHotel()
-    {
     }
 }

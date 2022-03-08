@@ -36,33 +36,12 @@ class Kota extends CI_Controller
     public function index()
     {
         $data = $this->data;
-        $sqlIndex = $this->mKota->indexKota()->result();
         $data['title'] = 'List Kota';
         $data['tabTitle'] = 'DW | List Kota';
         $data['sidebarActive'] = 'kota';
         $data['content'] = 'back/listKota';
-        $data['script'] = 'back/script/scrKota';
-        $data['listKota'] = $sqlIndex;
+        $data['script'] = '../../assets/back/js/scrKota';
         $data['role'] = $this->role;
         $this->load->view('back/index', $data);
-    }
-
-    public function editKota($idKota)
-    {
-        $data = $this->data;
-        $data['title'] = 'Edit Kota';
-        $data['tabTitle'] = 'DW | Edit Kota';
-        $data['sidebarActive'] = 'kota';
-        $data['content'] = 'back/editKota';
-        $data['role'] = $this->role;
-        $this->load->view('back/index', $data);
-    }
-
-    public function updateKota()
-    {
-    }
-
-    public function deleteKota()
-    {
     }
 }

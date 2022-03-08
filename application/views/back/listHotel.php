@@ -24,7 +24,7 @@
                     <div class="card">
                         <div class="card-header">
                             <!-- <h4 class="card-title">List kota</h4> -->
-                            <button class="btn btn-primary round waves-effect waves-light float-right" type="button" data-toggle="modal" data-target="#tambahDataKota"><i class="fa fa-plus"></i> Tambah Data Baru</button>
+                            <button class="btn btn-primary round waves-effect waves-light float-right" type="button" data-toggle="modal" data-target="#tambahDataKota" onclick="listKota()"><i class="fa fa-plus"></i> Tambah Data Baru</button>
                         </div>
 
                         <!-- Modal -->
@@ -39,16 +39,27 @@
                                     </div>
                                     <!-- <form method="POST" action="#"> -->
                                     <div class="modal-body">
-                                        <fieldset class="form-label-group form-group position-relative has-icon-right">
-                                            <input type="text" class="form-control" id="namaHotel" placeholder="Nama Hotel" autofocus>
-                                            <div class="form-control-position">
-                                                <i class="fa fa-money"></i>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <fieldset class="form-label-group form-group position-relative has-icon-left">
+                                                    <input type="text" class="form-control" id="namaHotel" placeholder="Nama Hotel" autofocus>
+                                                    <div class="form-control-position">
+                                                        <i class="fa fa-bed"></i>
+                                                    </div>
+                                                    <label for="namaKota">Nama Hotel</label>
+                                                </fieldset>
                                             </div>
-                                            <label for="namaKota">Nama Hotel</label>
-                                        </fieldset>
+                                            <div class="col-md-6">
+                                                <fieldset class="form-label-group form-group position-relative">
+                                                    <select id="listKota" name="listKota" class="form-control select2" required>
+                                                        <option>Pilih Kota</option>
+                                                    </select>
+                                                </fieldset>
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                     <input type="text" class="form-control" id="hargaQuadrupple" placeholder="Quadrupple" autofocus>
                                                     <div class="form-control-position">
                                                         <i class="fa fa-money"></i>
@@ -57,7 +68,7 @@
                                                 </fieldset>
                                             </div>
                                             <div class="col-md-4">
-                                                <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                     <input type="text" class="form-control" id="hargaTripple" placeholder="Tripple" autofocus>
                                                     <div class="form-control-position">
                                                         <i class="fa fa-money"></i>
@@ -66,7 +77,7 @@
                                                 </fieldset>
                                             </div>
                                             <div class="col-md-4">
-                                                <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                     <input type="text" class="form-control" id="hargaDouble" placeholder="Double" autofocus>
                                                     <div class="form-control-position">
                                                         <i class="fa fa-money"></i>
@@ -98,7 +109,7 @@
                                         </div>
                                         <!-- <form method="POST" action="#"> -->
                                         <div class="modal-body">
-                                            <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                            <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                 <input type="text" class="form-control" id="editNamaKota" autofocus>
                                                 <div class="form-control-position">
                                                     <i class="fa fa-money"></i>

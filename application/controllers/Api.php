@@ -76,4 +76,14 @@ class Api extends CI_Controller
         }
     }
 
+    public function listKota()
+    {
+        header('Content-Type: application/json');
+        if ($this->session->userdata("DW-login") == false) {
+            redirect(base_url("problem/forbidden"));
+        } else {
+            $data = $this->mKota->indexKota()->result_array();
+            echo json_encode($data);
+        }
+    }
 }
