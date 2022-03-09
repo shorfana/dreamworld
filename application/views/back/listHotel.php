@@ -41,7 +41,7 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <fieldset class="form-label-group form-group position-relative has-icon-left">
+                                                <fieldset class="form-label-group form-group position-relative has-icon-right">
                                                     <input type="text" class="form-control" id="namaHotel" placeholder="Nama Hotel" autofocus>
                                                     <div class="form-control-position">
                                                         <i class="fa fa-bed"></i>
@@ -59,17 +59,17 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                    <input type="text" class="form-control" id="hargaQuadrupple" placeholder="Quadrupple" autofocus>
+                                                <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                    <input type="text" class="form-control" id="hargaQuad" placeholder="Quad">
                                                     <div class="form-control-position">
                                                         <i class="fa fa-money"></i>
                                                     </div>
-                                                    <label for="hargaQuadrupple">Harga Quadrupple</label>
+                                                    <label for="hargaQuad">Harga Quad</label>
                                                 </fieldset>
                                             </div>
                                             <div class="col-md-4">
-                                                <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                    <input type="text" class="form-control" id="hargaTripple" placeholder="Tripple" autofocus>
+                                                <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                    <input type="text" class="form-control" id="hargaTripple" placeholder="Tripple">
                                                     <div class="form-control-position">
                                                         <i class="fa fa-money"></i>
                                                     </div>
@@ -77,12 +77,23 @@
                                                 </fieldset>
                                             </div>
                                             <div class="col-md-4">
-                                                <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                    <input type="text" class="form-control" id="hargaDouble" placeholder="Double" autofocus>
+                                                <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                    <input type="text" class="form-control" id="hargaDouble" placeholder="Double">
                                                     <div class="form-control-position">
                                                         <i class="fa fa-money"></i>
                                                     </div>
-                                                    <label for="namaKota">Harga Double</label>
+                                                    <label for="hargaDouble">Harga Double</label>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div class="row pt-2">
+                                            <div class="col-md-12">
+                                                <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                    <input class="form-control" type="file" id="gambarHotel" placeholder="Upload Gambar">
+                                                    <div class="form-control-position">
+                                                        <i class="fa fa-bed"></i>
+                                                    </div>
+                                                    <label for="gambarHotel">Upload Gambar Hotel</label>
                                                 </fieldset>
                                             </div>
                                         </div>
@@ -109,7 +120,7 @@
                                         </div>
                                         <!-- <form method="POST" action="#"> -->
                                         <div class="modal-body">
-                                            <fieldset class="form-label-group form-group position-relative has-icon-left">
+                                            <fieldset class="form-label-group form-group position-relative has-icon-right">
                                                 <input type="text" class="form-control" id="editNamaKota" autofocus>
                                                 <div class="form-control-position">
                                                     <i class="fa fa-money"></i>
