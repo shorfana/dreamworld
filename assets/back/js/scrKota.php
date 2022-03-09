@@ -1,4 +1,15 @@
 <script>
+    function alertError() {
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Coba Refresh Halaman Atau Tekan Tombol Dibawah Ini',
+            footer: '<a href="<?= base_url() . 'hotel' ?>">Refresh</a>',
+            showConfirmButton: false,
+            confirmButtonClass: 'btn btn-primary',
+            buttonsStyling: false,
+        })
+    }
     // load tabel kota
     function loadKota() {
         $('#tabelKota').DataTable({
@@ -78,15 +89,7 @@
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                     // alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Oops...',
-                        text: 'Coba Refresh Halaman Atau Tekan Tombol Dibawah Ini',
-                        footer: '<a href="<?= base_url() . 'kota' ?>">Refresh</a>',
-                        showConfirmButton: false,
-                        confirmButtonClass: 'btn btn-primary',
-                        buttonsStyling: false,
-                    })
+                    alertError()
                 }
             })
         }
@@ -94,7 +97,7 @@
 
 
     // EDIT
-    function setEdit(idKota,namaKota) {
+    function setEdit(idKota, namaKota) {
         $('#editNamaKota').val(namaKota);
         $('#modalEditKota').on('shown.bs.modal', function() {
             $("#editNamaKota").focus();
@@ -152,15 +155,7 @@
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                     // alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Oops... Ada Error',
-                        text: 'Coba Refresh Halaman Atau Tekan Tombol Dibawah Ini',
-                        footer: '<a href="<?= base_url() . 'kota' ?>">Refresh</a>',
-                        showConfirmButton: false,
-                        confirmButtonClass: 'btn btn-primary',
-                        buttonsStyling: false,
-                    })
+                    alertError()
                 }
             })
         }
@@ -168,7 +163,7 @@
 
     // HAPUS
 
-    function setHapus(idKota,namaKota) {
+    function setHapus(idKota, namaKota) {
         $('#modalHapusKota').on('shown.bs.modal', function() {
             $("#btnHapusKota").focus();
         });
@@ -208,15 +203,7 @@
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 // alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                Swal.fire({
-                    type: 'error',
-                    title: 'Oops... Ada Error',
-                    text: 'Coba Refresh Halaman Atau Tekan Tombol Dibawah Ini',
-                    footer: '<a href="<?= base_url() . 'kota' ?>">Refresh</a>',
-                    showConfirmButton: false,
-                    confirmButtonClass: 'btn btn-primary',
-                    buttonsStyling: false,
-                })
+                alertError();
             }
         })
     }
