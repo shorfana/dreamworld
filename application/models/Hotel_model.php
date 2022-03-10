@@ -11,11 +11,8 @@ class Hotel_model extends CI_Model
         $this->db->select('*');
         $this->db->from('hotel');
         $this->db->join('kota', 'hotel.id_kota = kota.id_kota');
-        return $this->db->get();  
-        // $query = $this->db->query(
-        //     "SELECT hotel.id_hotel,hotel.id_kota,hotel.harga_quad,hotel.harga_triple,hotel.harga_double,hotel.gambar_hotel, kota.nama_kota from hotel,kota WHERE hotel.id_kota=kota.id_kota"
-        // );
-        // return $query;
+        return $this->db->get();
+        // return $this->db->query("SELECT hotel.*, kota.nama_kota from hotel, kota where hotel.id_kota = kota.id_kota");
     }
 
     public function simpanHotel($data){

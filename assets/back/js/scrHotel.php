@@ -1,5 +1,5 @@
 <script>
-    // load tabel hotel
+    // LOAD TABEL HOTEL
     function loadHotel() {
         $('#tabelHotel').DataTable({
             pageLength: 10,
@@ -27,13 +27,14 @@
             }, {
                 data: null,
                 render: function(data, type, row) {
-                    return '<button class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light" data-toggle="modal" data-target="#modalEditKota" onclick="setEdit(' + data.id_hotel + ')"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light" data-toggle="modal" data-target="#modalHapusKota" onclick="setHapus(' + data.id_hotel + ')"><i class="fa fa-trash"></i></button>';
+                    return '<button class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light" data-toggle="modal" data-target="#modalEditHotel" onclick="setEdit(' + data.id_hotel + ',' + data.id_kota + ',' + data.harga_quad + ',' + data.harga_triple + ',' + data.harga_double + ',' + data.gambar_hotel + ')"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light" data-toggle="modal" data-target="#modalHapusHotel" onclick="setHapus(' + data.id_hotel + ')"><i class="fa fa-trash"></i></button>';
                 }
             }]
         });
     }
     loadHotel();
 
+    // NOTIFIKASI
     function alertFormNull() {
         Swal.fire({
             type: 'warning',
@@ -58,10 +59,12 @@
         })
     }
 
+    // FOKUS FORM INPUT PERTAMA
     $('#tambahDataHotel').on('shown.bs.modal', function() {
         $('#namaHotel').focus();
     })
 
+    // LIST KOTA PADA SELECT OPTION FORM
     function listKota() {
         $.ajax({
             url: "<?= base_url("Api/listKota") ?>",
@@ -78,7 +81,7 @@
                 for (i = 0; i < response.length; i++) {
                     list += "<option value='" + response[i].id_kota + "'>" + response[i].id_kota + " | " + response[i].nama_kota + "</option>"
                 }
-                $("#listKota").append(list);
+                $(".listKota").append(list);
 
             },
             error: function(xhr, ajaxOptions, thrownError) {
@@ -88,6 +91,7 @@
         })
     }
 
+    // SIMPAN HOTEL
     function simpanHotel() {
         namaHotel = $("#namaHotel").val();
         listKota = $("#listKota").val();
@@ -99,7 +103,8 @@
             $("#namaHotel").focus();
             alertFormNull();
         } else if (listKota == '-') {
-            $("#listKota").focus();
+            // $("#listKota").focus();
+            document.getElementById('listKota').focus();
             alertFormNull();
         } else if (hargaQuad == '') {
             $("#hargaQuad").focus();
@@ -165,39 +170,24 @@
         }
     }
 
+    // EDIT HOTEL
+    function setEdit(idHotel, idKota, hargaQuad, hargaTriple, hargaDouble, gambarHotel) {
+        // console.log(idHotel + ', ' + idKota + ', ' + hargaQuad + ', ' + hargaTriple + ', ' + hargaDouble + ', ' + gambarHotel)
+        // $('#editNamaKota').val(idKota);
+        // $('#editHargaQuad').val(hargaQuad);
+        // $('#editHargaTriple').val(hargaTriple);
+        // $('#editHargaDouble').val(hargaDouble);
 
-
-    // $.ajax({
-    //     url: "<?= base_url("Api/simpanHotel") ?>",
-    //     method: "POST",
-    //     dataType: "JSON",
-    //     data:{
-    //         namaHotel:namaHotel,
-    //         listKota:listKota,
-    //         hargaQuad:hargaQuad,
-    //         hargaTriple:hargaTriple,
-    //         hargaDouble:hargaDouble,
-    //         gambarHotel:gambarHotel
-    //     },
-    //     beforeSend: function(e) {
-    //         if (e && e.overrideMimeType) {
-    //             e.overrideMimeType("application/json;charset=UTf-8");
-    //         }
-    //     },
-    //     success: function(response) {
-    //         console.log(response)
-    //     },
-    //     error: function(xhr, ajaxOptions, thrownError) {
-    //         // alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-    //         Swal.fire({
-    //             type: 'error',
-    //             title: 'Oops...',
-    //             text: 'Coba Refresh Halaman Atau Tekan Tombol Dibawah Ini',
-    //             footer: '<a href="<?= base_url() . 'kota' ?>">Refresh</a>',
-    //             showConfirmButton: false,
-    //             confirmButtonClass: 'btn btn-primary',
-    //             buttonsStyling: false,
-    //         })
-    //     }
-    // })
+        // $('#modalEditKota').on('shown.bs.modal', function() {
+        //     $("#editNamaKota").focus();
+        // })
+        // $("#editNamaKota").keyup(function(e) {
+        //     if (e.which == 13) {
+        //         ubahKota(idKota);
+        //     }
+        // });
+        // $('#btnEditKota').click(function() {
+        //     ubahKota(idKota);
+        // })
+    }
 </script>

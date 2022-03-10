@@ -52,7 +52,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <fieldset class="form-label-group form-group position-relative">
-                                                    <select id="listKota" name="listKota" class="form-control select2" required>
+                                                    <select id="listKota" name="listKota" class="form-control select2 listKota" required>
                                                         <option value="-">Pilih Kota</option>
                                                     </select>
                                                 </fieldset>
@@ -107,8 +107,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-content">
 
+                        <div class="card-content">
                             <!-- Modal Edit-->
                             <div class="modal fade text-left" id="modalEditHotel" role="dialog" aria-labelledby="headerEditHotel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
@@ -121,16 +121,67 @@
                                         </div>
                                         <!-- <form method="POST" action="#"> -->
                                         <div class="modal-body">
-                                            <fieldset class="form-label-group form-group position-relative has-icon-right">
-                                                <input type="text" class="form-control" id="editNamaKota" autofocus>
-                                                <div class="form-control-position">
-                                                    <i class="fa fa-money"></i>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                        <input type="text" class="form-control" id="editNamaHotel" placeholder="Nama Hotel" autofocus>
+                                                        <div class="form-control-position">
+                                                            <i class="fa fa-bed"></i>
+                                                        </div>
+                                                        <label for="editNamaHotel">Nama Hotel</label>
+                                                    </fieldset>
                                                 </div>
-                                                <label for="namaKota">Nama Kota</label>
-                                            </fieldset>
+                                                <div class="col-md-4">
+                                                    <fieldset class="form-label-group form-group position-relative">
+                                                        <select id="listKota" name="listKota" class="form-control select2 listKota" required>
+                                                            <option value="-">Pilih Kota</option>
+                                                        </select>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                        <input type="number" step="any" class="form-control" id="editHargaQuad" placeholder="Quad">
+                                                        <div class="form-control-position">
+                                                            <i class="fa fa-money"></i>
+                                                        </div>
+                                                        <label for="editHargaQuad">Harga Quad</label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                        <input type="number" step="any" class="form-control" id="editHargaTriple" placeholder="triple">
+                                                        <div class="form-control-position">
+                                                            <i class="fa fa-money"></i>
+                                                        </div>
+                                                        <label for="editHargatriple">Harga triple</label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                        <input type="number" step="any" class="form-control" id="editHargaDouble" placeholder="Double">
+                                                        <div class="form-control-position">
+                                                            <i class="fa fa-money"></i>
+                                                        </div>
+                                                        <label for="editHargaDouble">Harga Double</label>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1">
+                                                <div class="col-md-12">
+                                                    <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                        <input class="form-control" type="file" name="editGambarHotel" id="editGambarHotel" placeholder="Upload Gambar">
+                                                        <div class="form-control-position">
+                                                            <i class="fa fa-picture-o"></i>
+                                                        </div>
+                                                        <label for="editGambarHotel">Upload Gambar Hotel</label>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" id="btnEditKota" class="btn btn-primary">Ubah</button>
+                                            <button type="submit" id="btnSimpanHotel" class="btn btn-primary" onclick="simpanHotel()">Simpan</button>
                                             <!-- data-dismiss="modal" -->
                                         </div>
                                         <!-- </form> -->
