@@ -102,7 +102,7 @@ class Api extends CI_Controller
     // SIMPAN HOTEL
     public function simpanHotel()
     {
-        header('Content-Type: application/json');
+        // header('Content-Type: application/json');
         if ($this->session->userdata("DW-login") == false) {
             redirect(base_url("problem/forbidden"));
         } else {
@@ -116,27 +116,88 @@ class Api extends CI_Controller
             $this->upload->initialize($config);
 
             if (!$this->upload->do_upload('file')) {
-                $error = array('error' => $this->upload->display_errors());
-                // aktifkan kode di bawah ini untuk melihat pesan error saat upload file
-                // echo "<pre>";
-                print_r($error);
+                $data = [
+                    "nama_hotel" => $this->input->post('namaHotel'),
+                    "id_kota" =>  $this->input->post('idKota'),
+                    "harga_quad" => $this->input->post('hargaQuad'),
+                    "harga_triple" => $this->input->post('hargaTriple'),
+                    "harga_double" => $this->input->post('hargaDouble'),
+                ];
+                $this->mHotel->simpanHotel($data);
+                // echo json_encode($data);
             } else {
                 $namaGambar = $this->upload->data('file_name');
                 $path = 'assets/back/img/hotel/' . $namaGambar;
                 chmod($path, 0777);
 
                 $data = [
-                    "id_kota" =>  $this->input->post('listKota'),
+                    "id_kota" =>  $this->input->post('idKota'),
                     "nama_hotel" => $this->input->post('namaHotel'),
                     "harga_quad" => $this->input->post('hargaQuad'),
                     "harga_triple" => $this->input->post('hargaTriple'),
                     "harga_double" => $this->input->post('hargaDouble'),
                     "gambar_hotel" => $namaGambar
-                    // "path_file" => $path
                 ];
                 $this->mHotel->simpanHotel($data);
-                echo json_encode($data);
+                // echo json_encode($data);
             }
+        }
+    }
+
+    public function updateHotel()
+    {
+        // header('Content-Type: application/json');
+        if ($this->session->userdata("DW-login") == false) {
+            redirect(base_url("problem/forbidden"));
+        } else {
+            $idHotel = $this->input->post('idHotel');
+
+            $path = null;
+            $config['upload_path'] = FCPATH . 'assets/back/img/hotel';
+            $config['allowed_types'] = 'jpg|jpeg|png';
+
+            $config['file_name']        = $this->input->post('namaHotel');
+            $config['overwrite']        = TRUE;
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            if (!$this->upload->do_upload('file')) {
+                $data = [
+                    "id_kota" =>  $this->input->post('idKota'),
+                    "nama_hotel" => $this->input->post('namaHotel'),
+                    "harga_quad" => $this->input->post('hargaQuad'),
+                    "harga_triple" => $this->input->post('hargaTriple'),
+                    "harga_double" => $this->input->post('hargaDouble'),
+                ];
+                $this->mHotel->updateHotel($idHotel, $data);
+                // echo json_encode($data);
+            } else {
+                $namaGambar = $this->upload->data('file_name');
+                $path = 'assets/back/img/hotel/' . $namaGambar;
+                chmod($path, 0777);
+
+                $data = [
+                    "id_kota" =>  $this->input->post('idKota'),
+                    "nama_hotel" => $this->input->post('namaHotel'),
+                    "harga_quad" => $this->input->post('hargaQuad'),
+                    "harga_triple" => $this->input->post('hargaTriple'),
+                    "harga_double" => $this->input->post('hargaDouble'),
+                    "gambar_hotel" => $namaGambar
+                ];
+                $this->mHotel->updateHotel($idHotel, $data);
+                // echo json_encode($data);
+            }
+        }
+    }
+
+    public function hapusHotel()
+    {
+        header('Content-Type: application/json');
+        if ($this->session->userdata("DW-login") == false) {
+            redirect(base_url("problem/forbidden"));
+        } else {
+            $idHotel =  $this->input->post('idHotel');
+            $this->mHotel->hapusHotel($idHotel);
         }
     }
 }

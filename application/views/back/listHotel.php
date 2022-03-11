@@ -24,11 +24,11 @@
                     <div class="card">
                         <div class="card-header">
                             <!-- <h4 class="card-title">List kota</h4> -->
-                            <button class="btn btn-primary round waves-effect waves-light float-right" type="button" data-toggle="modal" data-target="#tambahDataHotel"><i class="fa fa-plus"></i> Tambah Data Baru</button>
+                            <button class="btn btn-primary round waves-effect waves-light float-right" type="button" data-toggle="modal" data-target="#modalTambahHotel"><i class="fa fa-plus"></i> Tambah Data Baru</button>
                         </div>
 
                         <!-- Modal -->
-                        <div class="modal fade text-left" id="tambahDataHotel" tabindex="-1" role="dialog" aria-labelledby="headerTambahHotel" aria-hidden="true">
+                        <div class="modal fade text-left" id="modalTambahHotel" tabindex="-1" role="dialog" aria-labelledby="headerTambahHotel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -52,7 +52,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <fieldset class="form-label-group form-group position-relative">
-                                                    <select id="listKota" name="listKota" class="form-control select2 listKota" required>
+                                                    <select id="listKotaTambah" name="listKotaTambah" class="form-control select2 listKota" required>
                                                         <option value="-">Pilih Kota</option>
                                                     </select>
                                                 </fieldset>
@@ -121,6 +121,17 @@
                                         </div>
                                         <!-- <form method="POST" action="#"> -->
                                         <div class="modal-body">
+                                            <div class="row" style="display: none;">
+                                                <div class="col-md-12">
+                                                    <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                        <input type="text" class="form-control" id="editIdHotel" placeholder="Id Hotel">
+                                                        <div class="form-control-position">
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <label for="editIdHotel">Id Hotel</label>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <fieldset class="form-label-group form-group position-relative has-icon-right">
@@ -133,7 +144,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <fieldset class="form-label-group form-group position-relative">
-                                                        <select id="listKota" name="listKota" class="form-control select2 listKota" required>
+                                                        <select id="listKotaEdit" name="listKotaEdit" class="form-control select2 listKota" required>
                                                             <option value="-">Pilih Kota</option>
                                                         </select>
                                                     </fieldset>
@@ -181,7 +192,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" id="btnSimpanHotel" class="btn btn-primary" onclick="simpanHotel()">Simpan</button>
+                                            <button type="submit" id="btnEditHotel" class="btn btn-primary">Ubah</button>
                                             <!-- data-dismiss="modal" -->
                                         </div>
                                         <!-- </form> -->
@@ -190,20 +201,22 @@
                             </div>
                             <!-- ! Modal Edit-->
                             <!-- Modal Hapus-->
-                            <div class="modal fade text-left" id="modalHapusKota" role="dialog" aria-labelledby="headerHapusKota" aria-hidden="true">
+                            <div class="modal fade text-left" id="modalHapusHotel" role="dialog" aria-labelledby="headerHapusHotel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h6 class="modal-title" id="headerHapusKota"></h6>
+                                            <h6 class="modal-title" id="headerHapusHotel"></h6>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <h4>Yakin Akan Menghapus Data Kota Ini?</h4>
+                                            <input type="text" class="form-control" id="valIdHotel">
+                                            <input type="text" class="form-control" id="valNamaHotel">
+                                            <h4>Yakin Akan Menghapus Data Hotel Ini?</h4>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" id="btnHapusKota" class="btn btn-primary">Hapus</button>
+                                            <button type="submit" id="btnHapusHotel" class="btn btn-primary">Hapus</button>
                                             <!-- data-dismiss="modal" -->
                                         </div>
                                     </div>
