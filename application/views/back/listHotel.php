@@ -24,7 +24,7 @@
                     <div class="card">
                         <div class="card-header">
                             <!-- <h4 class="card-title">List kota</h4> -->
-                            <button class="btn btn-primary round waves-effect waves-light float-right" type="button" data-toggle="modal" data-target="#tambahDataHotel" onclick="listKota()"><i class="fa fa-plus"></i> Tambah Data Baru</button>
+                            <button class="btn btn-primary round waves-effect waves-light float-right" type="button" data-toggle="modal" data-target="#tambahDataHotel"><i class="fa fa-plus"></i> Tambah Data Baru</button>
                         </div>
 
                         <!-- Modal -->

@@ -27,7 +27,7 @@
             }, {
                 data: null,
                 render: function(data, type, row) {
-                    return '<button class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light" data-toggle="modal" data-target="#modalEditHotel" onclick="setEdit(' + data.id_hotel + ',' + data.id_kota + ',' + data.harga_quad + ',' + data.harga_triple + ',' + data.harga_double + ',' + data.gambar_hotel + ')"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light" data-toggle="modal" data-target="#modalHapusHotel" onclick="setHapus(' + data.id_hotel + ')"><i class="fa fa-trash"></i></button>';
+                    return '<button class="btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light" data-toggle="modal" data-target="#modalEditHotel" onclick="setEdit(' + data.id_hotel + ',\'' + data.nama_hotel + '\',' + data.id_kota + ',' + data.harga_quad + ',' + data.harga_triple + ',' + data.harga_double + ')"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light" data-toggle="modal" data-target="#modalHapusHotel" onclick="setHapus(' + data.id_hotel + ')"><i class="fa fa-trash"></i></button>';
                 }
             }]
         });
@@ -61,6 +61,7 @@
 
     // FOKUS FORM INPUT PERTAMA
     $('#tambahDataHotel').on('shown.bs.modal', function() {
+        $('.listKota').val('-').change();
         $('#namaHotel').focus();
     })
 
@@ -90,6 +91,7 @@
             }
         })
     }
+    listKota()
 
     // SIMPAN HOTEL
     function simpanHotel() {
@@ -152,7 +154,7 @@
                     })
                     $("#namaHotel").val("");
                     // MASIH BERMASALAH
-                    $("#listKota option:first").attr('selected', 'selected');
+                    $(".listKota option:first").attr('selected', 'selected');
                     // MASIH BERMASALAH
                     $("#hargaQuad").val("");
                     $("#hargaTriple").val("");
@@ -171,12 +173,14 @@
     }
 
     // EDIT HOTEL
-    function setEdit(idHotel, idKota, hargaQuad, hargaTriple, hargaDouble, gambarHotel) {
-        // console.log(idHotel + ', ' + idKota + ', ' + hargaQuad + ', ' + hargaTriple + ', ' + hargaDouble + ', ' + gambarHotel)
-        // $('#editNamaKota').val(idKota);
-        // $('#editHargaQuad').val(hargaQuad);
-        // $('#editHargaTriple').val(hargaTriple);
-        // $('#editHargaDouble').val(hargaDouble);
+    function setEdit(idHotel, namaHotel, idKota, hargaQuad, hargaTriple, hargaDouble) {
+        console.log(idHotel + ', ' + namaHotel + ', ' + idKota + ', ' + hargaQuad + ', ' + hargaTriple + ', ' + hargaDouble)
+        // listKota()
+        $('#editNamaHotel').val(namaHotel);
+        $('.listKota').val(idKota).change();
+        $('#editHargaQuad').val(hargaQuad);
+        $('#editHargaTriple').val(hargaTriple);
+        $('#editHargaDouble').val(hargaDouble);
 
         // $('#modalEditKota').on('shown.bs.modal', function() {
         //     $("#editNamaKota").focus();
