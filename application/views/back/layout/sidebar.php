@@ -22,9 +22,9 @@
                 <li class=" navigation-header">
                     <span>Main Menu</span>
                 </li>
-                <li class="nav-item <?= ($sidebarActive=='dashboard' ? 'active' : null)?>">
+                <!-- <li class="nav-item <?= ($sidebarActive=='dashboard' ? 'active' : null)?>">
                     <a href="<?= base_url() . 'dashboard' ?>"><i class="fa fa-tachometer fa-fw"></i>Dashboard</a>
-                </li>
+                </li> -->
                 <li class="nav-item <?= ($sidebarActive=='simulasiBiaya' ? 'active' : null)?>">
                     <a href="<?= base_url() . 'simulasiBiaya' ?>"><i class="fa fa-calculator fa-fw"></i>Simulasi Biaya</a>
                 </li>

@@ -36,7 +36,7 @@ class Login extends CI_Controller
 			$this->session->set_userdata('DW-userId', $userData['user_id']);
 			$this->session->set_userdata('DW-nama', $userData['username']);
 			$this->session->set_userdata('DW-role', $userData['role']);
-			redirect(base_url('dashboard'));
+			redirect(base_url('simulasiBiaya'));
 		} else {
 			$this->session->set_flashdata('FailedLogin', 'Wrong Email / Password');
 			redirect(base_url('login'));

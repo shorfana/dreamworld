@@ -5,7 +5,15 @@
 <script src="<?= base_url() ?>app-assets/vendors/js/vendors.min.js"></script>
 <!-- BEGIN Vendor JS-->
 
+<!-- BEGIN: Theme JS-->
+<script src="<?= base_url() ?>app-assets/js/core/app-menu.js"></script>
+<script src="<?= base_url() ?>app-assets/js/core/app.js"></script>
+<script src="<?= base_url() ?>app-assets/js/scripts/components.js"></script>
+<script src="<?= base_url() ?>app-assets/js/scripts/pages/app-ecommerce-shop.js"></script> 
+<!-- END: Theme JS-->
+
 <!-- BEGIN: Page Vendor JS-->
+<script src="<?= base_url() ?>app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js"></script>
 <script src="<?= base_url() ?>app-assets/vendors/js/charts/apexcharts.min.js"></script>
 <script src="<?= base_url() ?>app-assets/vendors/js/extensions/tether.min.js"></script>
 <script src="<?= base_url() ?>app-assets/vendors/js/extensions/dropzone.min.js"></script>
@@ -17,13 +25,9 @@
 <script src="<?= base_url() ?>app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
 <script src="<?= base_url() ?>app-assets/vendors/js/forms/select/select2.full.min.js"></script> 
 <script src="<?= base_url() ?>app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script> 
+<script src="<?= base_url() ?>app-assets/vendors/js/extensions/jquery.steps.min.js"></script> 
 <!-- END: Page Vendor JS-->
 
-<!-- BEGIN: Theme JS-->
-<script src="<?= base_url() ?>app-assets/js/core/app-menu.js"></script>
-<script src="<?= base_url() ?>app-assets/js/core/app.js"></script>
-<script src="<?= base_url() ?>app-assets/js/scripts/components.js"></script>
-<!-- END: Theme JS-->
 
 
 <!-- BEGIN: Page JS-->

@@ -37,6 +37,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url()?>app-assets/css/pages/dashboard-analytics.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url()?>app-assets/css/pages/card-analytics.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url()?>app-assets/css/plugins/tour/tour.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url()?>app-assets/css/pages/app-ecommerce-shop.css">
     <!-- END: Page CSS-->
 
     
