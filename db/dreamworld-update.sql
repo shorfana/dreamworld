@@ -11,7 +11,7 @@
  Target Server Version : 50733
  File Encoding         : 65001
 
- Date: 10/03/2022 01:38:21
+ Date: 13/03/2022 12:33:52
 */
 
 SET NAMES utf8mb4;
@@ -23,24 +23,24 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `hotel`;
 CREATE TABLE `hotel`  (
   `id_hotel` int(11) NOT NULL AUTO_INCREMENT,
-  `id_kota` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `id_kota` int(11) NULL DEFAULT NULL,
   `nama_hotel` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `harga_quad` double NULL DEFAULT NULL,
   `harga_triple` double NULL DEFAULT NULL,
   `harga_double` double NULL DEFAULT NULL,
   `gambar_hotel` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id_hotel`) USING BTREE,
-  INDEX `id_kota`(`id_kota`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  INDEX `id_kota`(`id_kota`) USING BTREE,
+  CONSTRAINT `hotel_ibfk_1` FOREIGN KEY (`id_kota`) REFERENCES `kota` (`id_kota`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of hotel
 -- ----------------------------
-INSERT INTO `hotel` VALUES (1, '2', 'ANWAR MADINAH MOVENPICK', 580, 760, 940, 'ANWAR_MADINAH_MOVENPICK.jpg');
-INSERT INTO `hotel` VALUES (2, '2', 'SWISS INTERNATIONAL', 210, 245, 280, 'SWISS_INTERNATIONAL.jpg');
-INSERT INTO `hotel` VALUES (3, '2', 'HAYAT GOLDEN', 210, 245, 280, 'HAYAT_GOLDEN.jpg');
-INSERT INTO `hotel` VALUES (4, '2', 'RAWDA ROYAL IN', 450, 550, 650, 'RAWDA_ROYAL_IN.jpg');
-INSERT INTO `hotel` VALUES (5, '2', 'NOKHBA ROYAL IN', 475, 575, 675, 'NOKHBA_ROYAL_IN.jpg');
+INSERT INTO `hotel` VALUES (1, 1, 'SWISS MAQAM', 680, 900, 1120, 'SWISS_MAQAM.jpg');
+INSERT INTO `hotel` VALUES (2, 1, 'CONRAD MAKKAH', 630, 800, 990, 'CONRAD_MAKKAH.jpg');
+INSERT INTO `hotel` VALUES (3, 1, 'MARWA ROTANA', 680, 880, 1080, 'MARWA_ROTANA.jpg');
+INSERT INTO `hotel` VALUES (4, 1, 'HILTON SUITES', 630, 800, 990, 'HILTON_SUITES.jpg');
 
 -- ----------------------------
 -- Table structure for kota
@@ -49,32 +49,14 @@ DROP TABLE IF EXISTS `kota`;
 CREATE TABLE `kota`  (
   `id_kota` int(11) NOT NULL AUTO_INCREMENT,
   `nama_kota` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id_kota`) USING BTREE,
-  INDEX `id_kota`(`id_kota`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id_kota`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of kota
 -- ----------------------------
-INSERT INTO `kota` VALUES (1, 'Mekah');
-INSERT INTO `kota` VALUES (2, 'Madinah');
-INSERT INTO `kota` VALUES (3, 'Jeddah');
-INSERT INTO `kota` VALUES (5, 'Jeddah');
-
--- ----------------------------
--- Table structure for room
--- ----------------------------
-DROP TABLE IF EXISTS `room`;
-CREATE TABLE `room`  (
-  `id_room` int(11) NOT NULL AUTO_INCREMENT,
-  `id_hotel` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `nama` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id_room`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of room
--- ----------------------------
+INSERT INTO `kota` VALUES (1, 'MEKAH');
+INSERT INTO `kota` VALUES (2, 'MADINAH');
 
 -- ----------------------------
 -- Table structure for token

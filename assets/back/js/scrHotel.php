@@ -1,44 +1,4 @@
 <script>
-
-    // LOAD TABEL HOTEL
-    // function loadHotel() {
-        var tabelHotel = $('#tabelHotel').DataTable( {
-            pageLength: 10,
-            "ajax": {
-                "url": "<?php echo base_url("Api/loadTabelHotel"); ?>",
-                "type": "POST",
-            },
-            "columns": [{
-                "data": "id_hotel"
-            }, {
-                'data': 'nama_hotel'
-            }, {
-                'data': 'nama_kota'
-            }, {
-                'data': 'harga_quad'
-            }, {
-                'data': 'harga_triple'
-            }, {
-                'data': 'harga_double'
-            }, {
-                'data': null,
-                render: function(data, type, row) {
-                    if (data.gambar_hotel != null) {
-                        return '<img src="assets/back/img/hotel/' + data.gambar_hotel + '" style="width:120px;height:auto">'
-                    } else {
-                        return '<img src="assets/back/img/hotel/hotel-default.png" style="width:120px;height:auto">'
-                    }
-                }
-            }, {
-                data: null,
-                render: function(data, type, row) {
-                    return '<button class="btn '+row+' btn-icon btn-warning mr-1 mb-1 waves-effect waves-light" data-toggle="modal" data-target="#modalEditHotel" onclick="setEdit(' + data.id_hotel + ',\'' + data.nama_hotel + '\',' + data.id_kota + ',' + data.harga_quad + ',' + data.harga_triple + ',' + data.harga_double + ')"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light" data-toggle="modal" data-target="#modalHapusHotel" onclick="setHapus(' + data.id_hotel + ',\'' + data.nama_hotel + '\')"><i class="fa fa-trash"></i></button>';
-                }
-            }]
-        });
-    // }
-    // loadHotel();
-
     // NOTIFIKASI
     function alertFormNull() {
         Swal.fire({
@@ -64,12 +24,78 @@
         })
     }
 
+    // LOAD TABEL HOTEL
+    function loadHotel() {
+        var tabelHotel = $('#tabelHotel').DataTable({
+            pageLength: 10,
+            "ajax": {
+                "url": "<?php echo base_url("Api/loadTabelHotel"); ?>",
+                "type": "POST",
+            },
+            "columns": [{
+                'data': null,
+                'render': function(data, type, row) {
+                    return '<h6 class="rowIdHotel">' + data.id_hotel + '</h6>';
+                }
+            }, {
+                'data': null,
+                render: function(data, type, row) {
+                    return '<h6 class="rowNamaHotel">' + data.nama_hotel + '</h6>';
+                }
+            }, {
+                'data': null,
+                render: function(data, type, row) {
+                    return '<h6 class="rowNamaKota">' + data.nama_kota + '</h6>';
+                }
+            }, {
+                'data': null,
+                render: function(data, type, row) {
+                    return '<h6 class="rowHQ">' + data.harga_quad + '</h6>';
+                }
+            }, {
+                'data': null,
+                render: function(data, type, row) {
+                    return '<h6 class="rowHT">' + data.harga_triple + '</h6>';
+                }
+            }, {
+                'data': null,
+                render: function(data, type, row) {
+                    return '<h6 class="rowHD">' + data.harga_double + '</h6>';
+                }
+            }, {
+                'data': null,
+                render: function(data, type, row) {
+                    if (data.gambar_hotel != null) {
+                        return '<img id="img-' + data.id_hotel + '" src="assets/back/img/hotel/' + data.gambar_hotel + '"    style="width:120px;height:auto" alt="image not loaded">'
+                    } else {
+                        return '<img id="img-' + data.id_hotel + '" src="assets/back/img/hotel/no_img.png" style="width:120px;height:auto">'
+                    }
+                }
+            }, {
+                data: null,
+                render: function(data, type, row, meta) {
+                    return '<button class=" btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light editHotel" data-toggle="modal" data-target="#modalEditHotel" data-idhotel="' + data.id_hotel + '" data-namahotel="' + data.nama_hotel + '" data-idkota="' + data.id_kota + '" data-hq="' + data.harga_quad + '" data-ht="' + data.harga_triple + '" data-hd="' + data.harga_double + '" data-gambarhotel="' + data.gambar_hotel + '"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light hapusHotel" data-id="' + data.id_hotel + '" data-nama="' + data.nama_hotel + '" data-toggle="modal" data-target="#modalHapusHotel"><i class="fa fa-trash"></i></button>';
+                }
+            }]
+        });
+    }
+    loadHotel()
+
     // FOKUS FORM INPUT PERTAMA
     $('#modalTambahHotel').on('shown.bs.modal', function() {
-        $('#listKotaTambah').val('-').change();
         $('#namaHotel').focus();
     })
 
+    function clearValHotel() {
+        // $('#modalTambahHotel').on('hidden.bs.modal', function() {
+        $('#listKotaTambah').val('-').change();
+        $('#namaHotel').val(null);
+        $('#hargaQuad').val(null);
+        $('#hargaTriple').val(null);
+        $('#hargaDouble').val(null);
+        $('#gambarHotel').val(null);
+        // })
+    }
 
     // LIST KOTA PADA SELECT OPTION FORM
     function listKota() {
@@ -148,7 +174,7 @@
                 beforeSend: function(e) {
                     if (e && e.overrideMimeType) {
                         e.overrideMimeType("application/json;charset=UTf-8");
-                        // $("#btnSimpanHotel").prop('disabled', true)
+                        $("#btnSimpanHotel").prop('disabled', true)
                     }
                 },
                 success: function(response) {
@@ -172,44 +198,55 @@
                     $('#modalTambahHotel').modal('hide');
                     $("#tabelHotel").dataTable().fnDestroy();
                     loadHotel();
+                    clearValHotel()
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                     // err = xhr.status + "\n" + xhr.responseText + "\n" + thrownError
-                    // console.log(err)
                     alertError()
+                    clearValHotel()
                 }
             })
         }
     }
 
 
-    // EDIT HOTEL
-    function setEdit(idHotel, namaHotel, idKota, hargaQuad, hargaTriple, hargaDouble) {
-        $('#editNamaHotel').focus();
-        $('#editIdHotel').val(idHotel);
-        $('#editNamaHotel').val(namaHotel);
-        $('#listKotaEdit').val(idKota).change();
-        $('#editHargaQuad').val(hargaQuad);
-        $('#editHargaTriple').val(hargaTriple);
-        $('#editHargaDouble').val(hargaDouble);
+    // --- EDIT HOTEL ---
+    // SET EDIT MODAL VALUE
+    $('#tabelHotel').on('click', 'button.editHotel', function() {
+        valIdHotel = $(this).data('idhotel')
+        valNamaHotel = $(this).data('namahotel')
+        valIdKota = $(this).data('idkota')
+        valHQ = $(this).data('hq')
+        valHT = $(this).data('ht')
+        valHD = $(this).data('hd')
+        valGambar = $(this).data('gambarhotel')
 
-        $('#modalEditHotel').on('shown.bs.modal', function() {
-            $("#editNamaHotel").focus();
-        })
-        $('#modalEditHotel').on('hidden.bs.modal', function() {
-            $('#editIdHotel').val();
-            $('#editNamaHotel').val(null);
-            $('#listKotaEdit').val('-').change();
-            $('#editHargaQuad').val(null);
-            $('#editHargaTriple').val(null);
-            $('#editHargaDouble').val(null);
-            $("#editGambarHotel").val(null);
-        })
+        $("#editIdHotel").val(valIdHotel)
+        $("#editNamaHotel").val(valNamaHotel)
+        $("#listKotaEdit").val(valIdKota).change()
+        $("#editHargaQuad").val(valHQ)
+        $("#editHargaTriple").val(valHT)
+        $("#editHargaDouble").val(valHD)
+    });
 
-        $('#btnEditHotel').click(function() {
-            ubahHotel();
-        })
-    }
+    // SET FOCUS ON MODAL SHOW
+    $('#modalEditHotel').on('shown.bs.modal', function() {
+        $("#editNamaHotel").focus();
+    })
+    // SET NULL FALUE ON MODAL DISMISS
+    $('#modalEditHotel').on('hidden.bs.modal', function() {
+        $('#editIdHotel').val(null);
+        $('#editNamaHotel').val(null);
+        $('#listKotaEdit').val('-').change();
+        $('#editHargaQuad').val(null);
+        $('#editHargaTriple').val(null);
+        $('#editHargaDouble').val(null);
+        $("#editGambarHotel").val(null);
+    })
+
+    $('#btnEditHotel').click(function() {
+        ubahHotel();
+    })
 
     function ubahHotel() {
         var idHotel = $("#editIdHotel").val();
@@ -219,7 +256,7 @@
         var hargaTriple = $("#editHargaTriple").val();
         var hargaDouble = $("#editHargaDouble").val();
         var gambarHotel = $("#editGambarHotel").val();
-        // alert(idKota)
+
         if (namaHotel == '') {
             $("#editNamaHotel").focus();
             alertFormNull();
@@ -252,7 +289,7 @@
             $.ajax({
                 url: "<?= base_url("Api/updateHotel") ?>",
                 method: "POST",
-                dataType: "text",
+                dataType: "json",
                 processData: false,
                 contentType: false,
                 data: newForm,
@@ -263,7 +300,31 @@
                     }
                 },
                 success: function(response) {
-                    // alert(response)
+                    // MENGATASI GAMBAR TIDAK BERUBAH KETIKA DATA UPDATE
+                    img = response.gambar_hotel;
+                    $.ajax({
+                        url: "<?= base_url("Api/getHotel") ?>",
+                        method: "POST",
+                        dataType: "json",
+                        data: {
+                            idHotel: idHotel
+                        },
+                        beforeSend: function(e) {
+                            e.overrideMimeType("application/json;charset=UTf-8");
+                        },
+                        success: function(value) {
+                            if (img != null && value.gambar_hotel != null) {
+                                var imgUrl = $('#img-' + idHotel).attr("src");
+                                $('#img-' + idHotel).removeAttr("src").attr("src", 'assets/back/img/hotel/' + value.gambar_hotel + '?v=${Math.random()}');
+                                // $('#img-' + idHotel).attr("src", 'assets/back/img/hotel/' + value.gambar_hotel + '?v=${Math.random()}');
+                            } else {
+                                return null
+                            }
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            alertError()
+                        }
+                    })
                     Swal.fire({
                         type: 'success',
                         title: 'Sukses',
@@ -277,36 +338,34 @@
                     $("#btnEditHotel").prop('disabled', false)
                     $('#modalEditHotel').modal('hide');
                     $("#tabelHotel").dataTable().fnDestroy();
-                    location.reload(true);
+                    // location.reload(true);
                     loadHotel();
+                    clearValHotel()
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                    // alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
                     alertError()
+                    // alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
                 }
             })
         }
     }
 
-    function setHapus(idHotel, namaHotel) {
-        $('#modalHapusHotel').on('shown.bs.modal', function() {
-            $("#btnHapusHotel").focus();
-        });
 
-        valIdHotel = $("#valIdHotel").val(idHotel)
-        valNamaHotel = $("#valNamaHotel").val(namaHotel)
 
-        $("#headerHapusHotel").text('Nama: ' + namaHotel)
-        klikHapus(valIdHotel,valNamaHotel)
-        tabelHotel.off()
-    }
-    
-    function klikHapus(idHotel, NamaHotel){
-        $('#btnHapusHotel').click(function() {
-            // hapusHotel(idHotel);
-            alert(idHotel.val())
-        });
-    }
+    $('#tabelHotel').on('click', 'button.hapusHotel', function() {
+        valIdHotel = $(this).data('id')
+        valNamaHotel = $(this).data('nama')
+        $("#hapusIdHotel").val(valIdHotel)
+        $("#hapusNamaHotel").val(valNamaHotel)
+        $("#btnHapusHotel").focus();
+        $("#bodyHapusHotel").text("Hapus Data Hotel " + valNamaHotel + " ?")
+    });
+
+    $('#btnHapusHotel').click(function() {
+        idHotel = $("#hapusIdHotel").val()
+        hapusHotel(idHotel)
+    });
+
 
     function hapusHotel(idHotel) {
         $.ajax({
@@ -335,6 +394,7 @@
                 $("#tabelHotel").dataTable().fnDestroy();
                 $('#modalHapusHotel').modal('hide');
                 loadHotel();
+                clearValHotel()
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 // alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);

@@ -205,15 +205,15 @@
                                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h6 class="modal-title" id="headerHapusHotel"></h6>
+                                            <h6 id="modal-title" id="headerHapusHotel">Hapus Hotel</h6>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <input type="text" class="form-control" id="valIdHotel">
-                                            <input type="text" class="form-control" id="valNamaHotel">
-                                            <h4>Yakin Akan Menghapus Data Hotel Ini?</h4>
+                                            <input type="text" class="form-control hidden" id="hapusIdHotel">
+                                            <input type="text" class="form-control hidden" id="hapusNamaHotel">
+                                            <h4 id="bodyHapusHotel"></h4>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" id="btnHapusHotel" class="btn btn-primary">Hapus</button>
@@ -229,7 +229,7 @@
                                     <table class="table zero-configuration text-center" id="tabelHotel">
                                         <thead>
                                             <tr>
-                                                <th class="text-left">Id Hotel</th>
+                                                <th class="text-left" id="idHotel">Id Hotel</th>
                                                 <th class="text-left">Nama Hotel</th>
                                                 <th class="text-left">Kota</th>
                                                 <th class="text-left">Harga Quad</th>

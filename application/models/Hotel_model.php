@@ -27,6 +27,12 @@ class Hotel_model extends CI_Model
         $this->db->update('hotel', $data);
     }
 
+    public function getHotel($idHotel)
+    {
+        $this->db->where('id_hotel', $idHotel);
+        return $this->db->get('hotel')->row();
+    }
+
     public function hapusHotel($idHotel)
     {
         $this->db->where('id_hotel', $idHotel);

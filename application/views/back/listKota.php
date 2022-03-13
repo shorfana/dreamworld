@@ -91,13 +91,14 @@
                                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h6 class="modal-title" id="headerHapusKota"></h6>
+                                            <h6 class="modal-title" id="headerHapusKota">Hapus Kota</h6>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <h4>Yakin Akan Menghapus Data Kota Ini?</h4>
+                                            <input class="form-control hidden" type="text" name="hapusIdKota" id="hapusIdKota">
+                                            <h4 id="bodyHapusKota"></h4>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" id="btnHapusKota" class="btn btn-primary">Hapus</button>

@@ -146,7 +146,7 @@ class Api extends CI_Controller
 
     public function updateHotel()
     {
-        // header('Content-Type: application/json');
+        header('Content-Type: application/json');
         if ($this->session->userdata("DW-login") == false) {
             redirect(base_url("problem/forbidden"));
         } else {
@@ -170,7 +170,7 @@ class Api extends CI_Controller
                     "harga_double" => $this->input->post('hargaDouble'),
                 ];
                 $this->mHotel->updateHotel($idHotel, $data);
-                // echo json_encode($data);
+                echo json_encode($data);
             } else {
                 $namaGambar = $this->upload->data('file_name');
                 $path = 'assets/back/img/hotel/' . $namaGambar;
@@ -185,8 +185,19 @@ class Api extends CI_Controller
                     "gambar_hotel" => $namaGambar
                 ];
                 $this->mHotel->updateHotel($idHotel, $data);
-                // echo json_encode($data);
+                echo json_encode($data);
             }
+        }
+    }
+
+    public function getHotel(){
+        header('Content-Type: application/json');
+        if ($this->session->userdata("DW-login") == false) {
+            redirect(base_url("problem/forbidden"));
+        } else {
+            $idHotel =  $this->input->post('idHotel');
+            $data = $this->mHotel->getHotel($idHotel);
+            echo json_encode($data);
         }
     }
 
