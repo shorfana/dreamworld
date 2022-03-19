@@ -230,26 +230,26 @@
                                         <table class="table zero-configuration text-center" id="tabelHotel">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-left" id="idHotel">Id Hotel</th>
-                                                    <th class="text-left">Nama Hotel</th>
-                                                    <th class="text-left">Kota</th>
-                                                    <th class="text-left">Harga Quad</th>
-                                                    <th class="text-left">Harga Triple</th>
-                                                    <th class="text-left">Harga Double</th>
-                                                    <th class="text-left">Gambar Hotel</th>
-                                                    <th class="text-left">Aksi</th>
+                                                    <th class="text-center" id="idHotel">Id Hotel</th>
+                                                    <th class="text-center">Nama Hotel</th>
+                                                    <th class="text-center">Kota</th>
+                                                    <th class="text-center">Harga Quad</th>
+                                                    <th class="text-center">Harga Triple</th>
+                                                    <th class="text-center">Harga Double</th>
+                                                    <th class="text-center">Gambar Hotel</th>
+                                                    <th class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th class="text-left">Id Hotel</th>
-                                                    <th class="text-left">Nama Hotel</th>
-                                                    <th class="text-left">Kota</th>
-                                                    <th class="text-left">Harga Quad</th>
-                                                    <th class="text-left">Harga Triple</th>
-                                                    <th class="text-left">Harga Double</th>
-                                                    <th class="text-left">Gambar Hotel</th>
-                                                    <th class="text-left">Aksi</th>
+                                                    <th class="text-center">Id Hotel</th>
+                                                    <th class="text-center">Nama Hotel</th>
+                                                    <th class="text-center">Kota</th>
+                                                    <th class="text-center">Harga Quad</th>
+                                                    <th class="text-center">Harga Triple</th>
+                                                    <th class="text-center">Harga Double</th>
+                                                    <th class="text-center">Gambar Hotel</th>
+                                                    <th class="text-center">Aksi</th>
                                                 </tr>
                                             </tfoot>
                                         </table>

@@ -17,6 +17,7 @@ class Api extends CI_Controller
         $this->load->model("User_model", 'mUser');
         $this->load->model("Kota_model", 'mKota');
         $this->load->model("Hotel_model", 'mHotel');
+        $this->load->model("Pelayanan_model", 'mPelayanan');
         $this->userId = $this->session->userdata("DW-userId");
         $this->profileData = $this->mUser->myProfile($this->userId);
         $this->role = $this->session->userdata("USF-hakAkses");
@@ -33,6 +34,8 @@ class Api extends CI_Controller
         );
     }
 
+    // --------------------- KOTA -----------------------
+    // LOAD TABEL KOTA
     public function loadTabelKota()
     {
         header('Content-Type: application/json');
@@ -41,9 +44,9 @@ class Api extends CI_Controller
         echo json_encode($json_data);
     }
 
+    // SIMPAN KOTA
     public function simpanKota()
     {
-        header('Content-Type: application/json');
         if ($this->session->userdata("DW-login") == false) {
             redirect(base_url("problem/forbidden"));
         } else {
@@ -54,9 +57,9 @@ class Api extends CI_Controller
         }
     }
 
+    // UBAH KOTA
     public function ubahKota()
     {
-        header('Content-Type: application/json');
         if ($this->session->userdata("DW-login") == false) {
             redirect(base_url("problem/forbidden"));
         } else {
@@ -66,9 +69,9 @@ class Api extends CI_Controller
         }
     }
 
+    // HAPUS KOTA
     public function hapusKota()
     {
-        header('Content-Type: application/json');
         if ($this->session->userdata("DW-login") == false) {
             redirect(base_url("problem/forbidden"));
         } else {
@@ -77,6 +80,19 @@ class Api extends CI_Controller
         }
     }
 
+    // --------------------- KOTA -----------------------   
+
+    // --------------------- HOTEL -----------------------
+    // LOAD TABEL
+    public function loadTabelHotel()
+    {
+        header('Content-Type: application/json');
+        $data = $this->mHotel->indexHotel()->result();
+        $json_data['data'] = $data;
+        echo json_encode($json_data);
+    }
+
+    // CMB KOTA PADA FORM HOTEL
     public function listKota()
     {
         header('Content-Type: application/json');
@@ -86,17 +102,6 @@ class Api extends CI_Controller
             $data = $this->mKota->indexKota()->result_array();
             echo json_encode($data);
         }
-    }
-
-
-    // HOTEL
-    // LOAD TABEL
-    public function loadTabelHotel()
-    {
-        header('Content-Type: application/json');
-        $data = $this->mHotel->indexHotel()->result();
-        $json_data['data'] = $data;
-        echo json_encode($json_data);
     }
 
     // SIMPAN HOTEL
@@ -144,9 +149,10 @@ class Api extends CI_Controller
         }
     }
 
+    // UBAH HOTEL
     public function updateHotel()
     {
-        header('Content-Type: application/json');
+        // header('Content-Type: application/json');
         if ($this->session->userdata("DW-login") == false) {
             redirect(base_url("problem/forbidden"));
         } else {
@@ -185,12 +191,14 @@ class Api extends CI_Controller
                     "gambar_hotel" => $namaGambar
                 ];
                 $this->mHotel->updateHotel($idHotel, $data);
-                echo json_encode($data);
+                // echo json_encode($data);
             }
         }
     }
 
-    public function getHotel(){
+    // UNTUK JS BUG GAMBAR HOTEL
+    public function getHotel()
+    {
         header('Content-Type: application/json');
         if ($this->session->userdata("DW-login") == false) {
             redirect(base_url("problem/forbidden"));
@@ -201,14 +209,62 @@ class Api extends CI_Controller
         }
     }
 
+    // HAPUS HOTEL
     public function hapusHotel()
     {
-        header('Content-Type: application/json');
         if ($this->session->userdata("DW-login") == false) {
             redirect(base_url("problem/forbidden"));
         } else {
             $idHotel =  $this->input->post('idHotel');
             $this->mHotel->hapusHotel($idHotel);
+        }
+    }
+    // --------------------- HOTEL -----------------------
+
+    // --------------------- PELAYANAN -----------------------
+    // LOAD TABEL PELAYANAN
+    public function loadTabelPelayanan()
+    {
+        header('Content-Type: application/json');
+        $data = $this->mPelayanan->indexPelayanan()->result();
+        $json_data['data'] = $data;
+        echo json_encode($json_data);
+    }
+
+    // SIMPAN PELAYANAN
+    public function simpanPelayanan()
+    {
+        if ($this->session->userdata("DW-login") == false) {
+            redirect(base_url("problem/forbidden"));
+        } else {
+            $value = [
+                'jenis_pelayanan' => $this->input->post('jenisPelayanan'),
+                'harga_pelayanan' => $this->input->post('hargaPelayanan')
+            ];
+            $this->mPelayanan->simpanPelayanan($value);
+        }
+    }
+
+    // UBAH PELAYANAN
+    public function ubahPelayanan()
+    {
+        if ($this->session->userdata("DW-login") == false) {
+            redirect(base_url("problem/forbidden"));
+        } else {
+            $idPelayanan =  $this->input->post('idPelayanan');
+            $jenisPelayanan = $this->input->post('jenisPelayanan');
+            $this->mKota->editPelayanan($idPelayanan, $jenisPelayanan);
+        }
+    }
+
+    // HAPUS PELAYANAN
+    public function hapusPelayanan()
+    {
+        if ($this->session->userdata("DW-login") == false) {
+            redirect(base_url("problem/forbidden"));
+        } else {
+            $idPelayanan =  $this->input->post('idPelayanan');
+            $this->mPelayanan->hapusPelayanan($idPelayanan);
         }
     }
 }

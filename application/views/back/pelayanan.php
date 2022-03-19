@@ -25,15 +25,15 @@
                         <div class="card">
                             <div class="card-header">
                                 <!-- <h4 class="card-title">List kota</h4> -->
-                                <button class="btn btn-primary round waves-effect waves-light float-right" type="button" data-toggle="modal" data-target="#tambahDataKota"><i class="fa fa-plus"></i> Tambah Data Baru</button>
+                                <button id="tes" class="btn btn-primary round waves-effect waves-light float-right" type="button" data-toggle="modal" data-target="#tambahDataPelayanan"><i class="fa fa-plus"></i> Tambah Data Baru</button>
                             </div>
-    
+
                             <!-- Modal -->
-                            <div class="modal fade text-left" id="tambahDataKota" tabindex="-1" role="dialog" aria-labelledby="headerTambahKota" aria-hidden="true">
+                            <div class="modal fade text-left" id="tambahDataPelayanan" tabindex="-1" role="dialog" aria-labelledby="headerTambahPelayanan" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="headerTambahKota">Tambah Data Kota</h4>
+                                            <h4 class="modal-title" id="headerTambahPelayanan">Tambah Data Pelayanan</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -41,15 +41,23 @@
                                         <!-- <form method="POST" action="#"> -->
                                         <div class="modal-body">
                                             <fieldset class="form-label-group form-group position-relative has-icon-right">
-                                                <input type="text" class="form-control" id="namaKota" placeholder="Nama Kota" autofocus>
+                                                <input type="text" class="form-control" id="jenisPelayanan" placeholder="Jenis Pelayanan" autofocus>
                                                 <div class="form-control-position">
-                                                    <i class="fa fa-building"></i>
+                                                    <i class="fa fa-handshake-o"></i>
                                                 </div>
-                                                <label for="namaKota">Nama Kota</label>
+                                                <label for="jenisPelayanan">Jenis Pelayanan</label>
+                                            </fieldset>
+
+                                            <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                <input type="number" step="any" class="form-control" id="hargaPelayanan" placeholder="Harga Pelayanan">
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-money"></i>
+                                                </div>
+                                                <label for="hargaPelayanan">Harga Pelayanan</label>
                                             </fieldset>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" id="btnSimpanKota" class="btn btn-primary" onclick="simpanKota()">Simpan</button>
+                                            <button type="submit" id="btnSimpanPelayanan" class="btn btn-primary" onclick="simpanPelayanan()">Simpan</button>
                                             <!-- data-dismiss="modal" -->
                                         </div>
                                         <!-- </form> -->
@@ -57,26 +65,20 @@
                                 </div>
                             </div>
                             <div class="card-content">
-    
+
                                 <!-- Modal Edit-->
-                                <div class="modal fade text-left" id="modalEditKota" role="dialog" aria-labelledby="headerEditKota" aria-hidden="true">
+                                <div class="modal fade text-left" id="modalEditPelayanan" role="dialog" aria-labelledby="headerEditPelayanan" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="headerEditKota">Ubah Data Kota</h4>
+                                                <h4 class="modal-title" id="headerEditPelayanan">Ubah Data Pelayanan</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <!-- <form method="POST" action="#"> -->
                                             <div class="modal-body">
-                                                <fieldset class="form-label-group form-group position-relative has-icon-right">
-                                                    <input type="text" class="form-control" id="editNamaKota" autofocus>
-                                                    <div class="form-control-position">
-                                                        <i class="fa fa-building"></i>
-                                                    </div>
-                                                    <label for="namaKota">Nama Kota</label>
-                                                </fieldset>
+
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit" id="btnEditKota" class="btn btn-primary">Ubah</button>
@@ -92,39 +94,41 @@
                                     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h6 class="modal-title" id="headerHapusKota">Hapus Kota</h6>
+                                                <h6 class="modal-title" id="headerHapusPelayanan">Hapus Data Pelayanan</h6>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <input class="form-control hidden" type="text" name="hapusIdKota" id="hapusIdKota">
-                                                <h4 id="bodyHapusKota"></h4>
+                                                <input class="form-control hidden" type="text" name="hapusIdPelayanan" id="hapusIdPelayanan">
+                                                <h4 id="bodyHapusPelayanan"></h4>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" id="btnHapusKota" class="btn btn-primary">Hapus</button>
+                                                <button type="submit" id="btnHapusPelayanan" class="btn btn-primary">Hapus</button>
                                                 <!-- data-dismiss="modal" -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- ! Modal Hapus-->
-    
+
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table zero-configuration text-center" id="tabelKota">
+                                        <table class="table zero-configuration text-center" id="tabelPelayanan">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-left">No</th>
-                                                    <th class="text-left">Nama Kota</th>
-                                                    <th class="text-left">Aksi</th>
+                                                    <th class="text-center">No</th>
+                                                    <th class="text-center">Jenis Pelayanan</th>
+                                                    <th class="text-center">Harga Pelayanan</th>
+                                                    <th class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th class="text-left">No</th>
-                                                    <th class="text-left">Nama Kota</th>
-                                                    <th class="text-left">Aksi</th>
+                                                    <th class="text-center">No</th>
+                                                    <th class="text-center">Jenis Pelayanan</th>
+                                                    <th class="text-center">Harga Pelayanan</th>
+                                                    <th class="text-center">Aksi</th>
                                                 </tr>
                                             </tfoot>
                                         </table>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pengaturan extends CI_Controller
+class Pelayanan extends CI_Controller
 {
 	var $data;
 	function __construct()
@@ -34,11 +34,11 @@ class Pengaturan extends CI_Controller
 	public function index()
 	{
 		$data = $this->data;
-		$data['title'] = 'Pengaturan';
-		$data['tabTitle'] = 'DW | Pengaturan';
-		$data['sidebarActive'] = 'pengaturan';
-		$data['content'] = 'back/pengaturan';
-		// $data['script'] = '';
+		$data['title'] = 'Pelayanan';
+		$data['tabTitle'] = 'DW | Pelayanan';
+		$data['sidebarActive'] = 'pelayanan';
+		$data['content'] = 'back/pelayanan';
+		$data['script'] = '../../assets/back/js/scrPelayanan';
 		$data['role'] = $this->role;
 		$this->load->view('back/index', $data);
 	}

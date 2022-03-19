@@ -37,8 +37,8 @@
                 <li class="nav-item <?= ($sidebarActive=='kota' ? 'active' : null)?>">
                     <a href="<?= base_url() . 'kota' ?>"><i class="fa fa-building fa-fw"></i>Data Kota</a>
                 </li>
-                <li class="nav-item <?= ($sidebarActive=='pengaturan' ? 'active' : null)?>">
-                    <a href="<?= base_url() . 'pengaturan' ?>"><i class="fa fa-wrench fa-fw fa-beat-fade" style="--fa-beat-fade-opacity: 0.5; --fa-beat-fade-scale: 1.5;" ></i>Pengaturan</a>
+                <li class="nav-item <?= ($sidebarActive=='pelayanan' ? 'active' : null)?>">
+                    <a href="<?= base_url() . 'pelayanan' ?>"><i class="fa fa-heart"></i>Pelayanan</a>
                 </li>
                 <li class=" navigation-header">
                     <span>Other</span>
