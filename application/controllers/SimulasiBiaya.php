@@ -38,7 +38,7 @@ class SimulasiBiaya extends CI_Controller
 		$data['tabTitle'] = 'DW | Simulasi Biaya';
 		$data['sidebarActive'] = 'simulasiBiaya';
 		$data['content'] = 'back/simulasiBiaya';
-		// $data['script'] = '';
+        $data['script'] = '../../assets/back/js/scrSimulasiBiaya';
 		$data['role'] = $this->role;
 		$this->load->view('back/index', $data);
 	}

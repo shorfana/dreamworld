@@ -30,4 +30,9 @@ class Pelayanan_model extends CI_Model
         $this->db->delete('pelayanan');
     }
 
+    public function getService($idPelayanan)
+    {
+        $this->db->where('id_pelayanan', $idPelayanan);
+        return $this->db->get('pelayanan')->row();
+    }
 }

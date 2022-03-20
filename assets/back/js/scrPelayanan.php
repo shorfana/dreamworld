@@ -32,7 +32,7 @@
             showConfirmButton: false,
             confirmButtonClass: 'btn btn-primary',
             buttonsStyling: false,
-            timer: 3500
+            timer: 2000
         })
     }
 
@@ -53,7 +53,7 @@
             }, {
                 data: null,
                 render: function(data, type, row, meta) {
-                    return '<button class=" btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light editPelayanan" data-toggle="modal" data-target="#modalEditPelayanan" data-idpelayanan="' + data.id_pelayanan + '" data-jenispelayanan="' + data.jenis_pelayanan + '"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light hapusPelayanan" data-id="' + data.id_kota + '" data-jenis="' + data.jenis_pelayanan + '" data-toggle="modal" data-target="#modalHapusPelayanan"><i class="fa fa-trash"></i></button>';
+                    return '<button class=" btn btn-icon btn-warning mr-1 mb-1 waves-effect waves-light editPelayanan" data-toggle="modal" data-target="#modalEditPelayanan" data-edit_idpel="' + data.id_pelayanan + '" data-edit_jenis="' + data.jenis_pelayanan + '" data-edit_harga="' + data.harga_pelayanan + '"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light hapusPelayanan" data-del_idpel="' + data.id_pelayanan + '" data-del_jenis="' + data.jenis_pelayanan + '" data-toggle="modal" data-target="#modalHapusPelayanan"><i class="fa fa-trash"></i></button>';
                 }
             }]
         });
@@ -64,12 +64,16 @@
     $('#tambahDataPelayanan').on('shown.bs.modal', function() {
         $('#jenisPelayanan').focus();
     })
-
+    $("#hargaPelayanan").keyup(function(e) {
+        if (e.which == 13) {
+            $("#btnSimpanPelayanan").click();
+        }
+    });
     // SIMPAN
     function simpanPelayanan() {
         var jenisPelayanan = $("#jenisPelayanan").val();
         var hargaPelayanan = $("#hargaPelayanan").val();
-        if (hargaPelayanan == '') {
+        if (jenisPelayanan == '') {
             $("#jenisPelayanan").focus();
             alertFormNull()
         } else if (hargaPelayanan == '') {
@@ -117,15 +121,23 @@
 
     // EDIT
     $('#tabelPelayanan').on('click', 'button.editPelayanan', function() {
-        valIdPelayanan = $(this).data('idPelayanan')
-        valJenisPelayanan = $(this).data('jenisPelayanan')
+        valIdPelayanan = $(this).data('edit_idpel')
+        valJenisPelayanan = $(this).data('edit_jenis')
+        valHargaPelayanan = $(this).data('edit_harga')
 
         $("#editJenisPelayanan").val(valJenisPelayanan)
+        $("#editHargaPelayanan").val(valHargaPelayanan)
     });
     $('#modalEditPelayanan').on('shown.bs.modal', function() {
         $("#editJenisPelayanan").focus();
+
     })
     $("#editJenisPelayanan").keyup(function(e) {
+        if (e.which == 13) {
+            ubahPelayanan(valIdPelayanan)
+        }
+    });
+    $("#editHargaPelayanan").keyup(function(e) {
         if (e.which == 13) {
             ubahPelayanan(valIdPelayanan)
         }
@@ -136,9 +148,9 @@
 
 
     function ubahPelayanan(idPelayanan) {
-        var namaPelayanan = $("#jenisPelayanan").val();
-        var hargaPelayanan = $("#hargaPelayanan").val();
-        if (namaPelayanan == '') {
+        var jenisPelayanan = $("#editJenisPelayanan").val();
+        var hargaPelayanan = $("#editHargaPelayanan").val();
+        if (jenisPelayanan == '') {
             $("#jenisPelayanan").focus();
             alertFormNull()
         } else if (hargaPelayanan == '') {
@@ -150,7 +162,8 @@
                 url: "<?= base_url("Api/ubahPelayanan"); ?>",
                 data: {
                     idPelayanan: idPelayanan,
-                    jenisPelayanan: jenisPelayanan
+                    jenisPelayanan: jenisPelayanan,
+                    hargaPelayanan: hargaPelayanan
                 },
                 dataType: "text",
                 beforeSend: function(e) {
@@ -183,10 +196,10 @@
 
     // HAPUS
     $('#tabelPelayanan').on('click', 'button.hapusPelayanan', function() {
-        valIdPelayanan = $(this).data('id')
-        valJenisPelayanan = $(this).data('jenis')
+        valIdPelayanan = $(this).data('del_idpel')
+        valJenisPelayanan = $(this).data('del_jenis')
         $("#hapusIdPelayanan").val(valIdPelayanan)
-        $("#bodyHapusPelayanan").text("Hapus Data Pelayanan " + valJenisPelayanan + " ?")
+        $("#bodyHapusPelayanan").text("Hapus Data Pelayanan \"" + valJenisPelayanan + "\" ?")
         $("#btnHapusPelayanan").focus();
 
         $("#btnHapusPelayanan").keyup(function(e) {
@@ -198,7 +211,6 @@
 
     $('#btnHapusPelayanan').click(function() {
         idPelayanan = $("#hapusIdPelayanan").val()
-        // alert(idKota)
         hapusPelayanan(idPelayanan)
     });
 

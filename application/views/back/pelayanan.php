@@ -76,21 +76,31 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <!-- <form method="POST" action="#"> -->
                                             <div class="modal-body">
-
+                                                <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                    <input type="text" class="form-control" placeholder="Jenis Pelayanan" id="editJenisPelayanan" autofocus>
+                                                    <div class="form-control-position">
+                                                        <i class="fa fa-handshake-o"></i>
+                                                    </div>
+                                                    <label for="editJenisPelayanan">Jenis Pelayanan</label>
+                                                </fieldset>
+                                                <fieldset class="form-label-group form-group position-relative has-icon-right">
+                                                    <input type="number" step="any" class="form-control" placeholder="Harga Pelayanan" id="editHargaPelayanan">
+                                                    <div class="form-control-position">
+                                                        <i class="fa fa-money"></i>
+                                                    </div>
+                                                    <label for="editHargaPelayanan">Harga Pelayanan</label>
+                                                </fieldset>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" id="btnEditKota" class="btn btn-primary">Ubah</button>
-                                                <!-- data-dismiss="modal" -->
+                                                <button type="submit" id="btnEditPelayanan" class="btn btn-primary">Ubah</button>
                                             </div>
-                                            <!-- </form> -->
                                         </div>
                                     </div>
                                 </div>
                                 <!-- ! Modal Edit-->
                                 <!-- Modal Hapus-->
-                                <div class="modal fade text-left" id="modalHapusKota" role="dialog" aria-labelledby="headerHapusKota" aria-hidden="true">
+                                <div class="modal fade text-left" id="modalHapusPelayanan" role="dialog" aria-labelledby="headerHapusPelayanan" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -114,21 +124,21 @@
 
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table zero-configuration text-center" id="tabelPelayanan">
+                                        <table class="table zero-configuration " id="tabelPelayanan">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">No</th>
-                                                    <th class="text-center">Jenis Pelayanan</th>
-                                                    <th class="text-center">Harga Pelayanan</th>
-                                                    <th class="text-center">Aksi</th>
+                                                    <th>No</th>
+                                                    <th>Jenis Pelayanan</th>
+                                                    <th>Harga Pelayanan</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th class="text-center">No</th>
-                                                    <th class="text-center">Jenis Pelayanan</th>
-                                                    <th class="text-center">Harga Pelayanan</th>
-                                                    <th class="text-center">Aksi</th>
+                                                    <th>No</th>
+                                                    <th>Jenis Pelayanan</th>
+                                                    <th>Harga Pelayanan</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </tfoot>
                                         </table>

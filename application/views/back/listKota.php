@@ -71,11 +71,11 @@
                                             <!-- <form method="POST" action="#"> -->
                                             <div class="modal-body">
                                                 <fieldset class="form-label-group form-group position-relative has-icon-right">
-                                                    <input type="text" class="form-control" id="editNamaKota" autofocus>
+                                                    <input type="text" class="form-control" id="editNamaKota" placeholder="Nama Kota" autofocus>
                                                     <div class="form-control-position">
                                                         <i class="fa fa-building"></i>
                                                     </div>
-                                                    <label for="namaKota">Nama Kota</label>
+                                                    <label for="editNamaKota">Nama Kota</label>
                                                 </fieldset>
                                             </div>
                                             <div class="modal-footer">

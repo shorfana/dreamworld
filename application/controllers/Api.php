@@ -18,6 +18,7 @@ class Api extends CI_Controller
         $this->load->model("Kota_model", 'mKota');
         $this->load->model("Hotel_model", 'mHotel');
         $this->load->model("Pelayanan_model", 'mPelayanan');
+        $this->load->model("SimulasiBiaya_model", 'mSimbi');
         $this->userId = $this->session->userdata("DW-userId");
         $this->profileData = $this->mUser->myProfile($this->userId);
         $this->role = $this->session->userdata("USF-hakAkses");
@@ -237,11 +238,11 @@ class Api extends CI_Controller
         if ($this->session->userdata("DW-login") == false) {
             redirect(base_url("problem/forbidden"));
         } else {
-            $value = [
+            $data = [
                 'jenis_pelayanan' => $this->input->post('jenisPelayanan'),
                 'harga_pelayanan' => $this->input->post('hargaPelayanan')
             ];
-            $this->mPelayanan->simpanPelayanan($value);
+            $this->mPelayanan->simpanPelayanan($data);
         }
     }
 
@@ -253,7 +254,8 @@ class Api extends CI_Controller
         } else {
             $idPelayanan =  $this->input->post('idPelayanan');
             $jenisPelayanan = $this->input->post('jenisPelayanan');
-            $this->mKota->editPelayanan($idPelayanan, $jenisPelayanan);
+            $hargaPelayanan = $this->input->post('hargaPelayanan');
+            $this->mPelayanan->editPelayanan($idPelayanan, $jenisPelayanan, $hargaPelayanan);
         }
     }
 
@@ -265,6 +267,59 @@ class Api extends CI_Controller
         } else {
             $idPelayanan =  $this->input->post('idPelayanan');
             $this->mPelayanan->hapusPelayanan($idPelayanan);
+        }
+    }
+    // --------------------- PELAYANAN -----------------------
+
+    // --------------------- SIMULASI BIAYA -------------------
+    public function listHotel()
+    {
+        header('Content-Type: application/json');
+        if ($this->session->userdata("DW-login") == false) {
+            redirect(base_url("problem/forbidden"));
+        } else {
+            $dataHotel = $this->mHotel->indexHotel()->result_array();
+
+            $groupingHotel = array();
+            foreach ($dataHotel as $dh) {
+                $groupingHotel[$dh['nama_kota']][] = $dh;
+            }
+            echo json_encode($groupingHotel);
+        }
+    }
+
+    public function listPelayanan()
+    {
+        header('Content-Type: application/json');
+        if ($this->session->userdata("DW-login") == false) {
+            redirect(base_url("problem/forbidden"));
+        } else {
+            $dataPelayanan = $this->mPelayanan->indexPelayanan()->result_array();
+            echo json_encode($dataPelayanan);
+        }
+    }
+
+    public function hotelById()
+    {
+        header('Content-Type: application/json');
+        if ($this->session->userdata("DW-login") == false) {
+            redirect(base_url("problem/forbidden"));
+        } else {
+            $idHotel =  $this->input->post('idHotel');
+            $dataHotel = $this->mHotel->getHotel($idHotel);
+            echo json_encode($dataHotel);
+        }
+    }
+
+    public function serviceById()
+    {
+        header('Content-Type: application/json');
+        if ($this->session->userdata("DW-login") == false) {
+            redirect(base_url("problem/forbidden"));
+        } else {
+            $idPelayanan =  $this->input->post('idServ');
+            $dataPelayanan = $this->mPelayanan->getService($idPelayanan);
+            echo json_encode($dataPelayanan);
         }
     }
 }

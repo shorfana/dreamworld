@@ -227,32 +227,35 @@
 
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table zero-configuration text-center" id="tabelHotel">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center" id="idHotel">Id Hotel</th>
-                                                    <th class="text-center">Nama Hotel</th>
-                                                    <th class="text-center">Kota</th>
-                                                    <th class="text-center">Harga Quad</th>
-                                                    <th class="text-center">Harga Triple</th>
-                                                    <th class="text-center">Harga Double</th>
-                                                    <th class="text-center">Gambar Hotel</th>
-                                                    <th class="text-center">Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th class="text-center">Id Hotel</th>
-                                                    <th class="text-center">Nama Hotel</th>
-                                                    <th class="text-center">Kota</th>
-                                                    <th class="text-center">Harga Quad</th>
-                                                    <th class="text-center">Harga Triple</th>
-                                                    <th class="text-center">Harga Double</th>
-                                                    <th class="text-center">Gambar Hotel</th>
-                                                    <th class="text-center">Aksi</th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
+                                        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                            <table class="table zero-configuration dataTable" role="grid" id="tabelHotel">
+                                                <thead>
+                                                    <tr>
+                                                        <th id="idHotel">Id Hotel</th>
+                                                        <th>Nama Hotel</th>
+                                                        <th>Kota</th>
+                                                        <th>Harga Quad</th>
+                                                        <th>Harga Triple</th>
+                                                        <th>Harga Double</th>
+                                                        <th>Gambar Hotel</th>
+                                                        <th>Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Id Hotel</th>
+                                                        <th>Nama Hotel</th>
+                                                        <th>Kota</th>
+                                                        <th>Harga Quad</th>
+                                                        <th>Harga Triple</th>
+                                                        <th>Harga Double</th>
+                                                        <th>Gambar Hotel</th>
+                                                        <th>Aksi</th>
+                                                    </tr>
+
+                                                </tfoot>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

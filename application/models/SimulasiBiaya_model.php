@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Hotel_model extends CI_Model
+class SimulasiBiaya_model extends CI_Model
 {
     function __construct()
     {
@@ -9,11 +9,7 @@ class Hotel_model extends CI_Model
 
     public function indexHotel()
     {
-        $this->db->select('*');
-        $this->db->from('hotel');
-        $this->db->join('kota', 'hotel.id_kota = kota.id_kota');
-        return $this->db->get();
-        // return $this->db->query("SELECT hotel.*, kota.nama_kota from hotel, kota where hotel.id_kota = kota.id_kota");
+        return $this->db->get('hotel');
     }
 
     public function simpanHotel($data)
@@ -29,11 +25,8 @@ class Hotel_model extends CI_Model
 
     public function getHotel($idHotel)
     {
-        $this->db->select('*');
-        $this->db->from('hotel');
-        $this->db->join('kota', 'hotel.id_kota = kota.id_kota');
-        $this->db->where('hotel.id_hotel', $idHotel);
-        return $this->db->get()->row();
+        $this->db->where('id_hotel', $idHotel);
+        return $this->db->get('hotel')->row();
     }
 
     public function hapusHotel($idHotel)
