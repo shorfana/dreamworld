@@ -93,9 +93,9 @@
                                         }
                                     </style>
                                     <hr>
-                                    <div class="divHotel">
-                                        <ul class="list-group">
-                                            <li class="list-group-item active d-flex justify-content-between align-items-center">
+                                    <div id="divHotel">
+                                        <!-- <ul class="list-group">
+                                            <li class="list-group-item list-group-item-info d-flex justify-content-between align-items-center">
                                                 <div class="col-9">
                                                     <span class="font-weight-bold">ANWAR MADINAH MOVENPICK</span>
                                                 </div>
@@ -117,7 +117,7 @@
                                         </ul>
                                         <br>
                                         <ul class="list-group">
-                                            <li class="list-group-item active d-flex justify-content-between align-items-center">
+                                            <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
                                                 <div class="col-9">
                                                     <span class="font-weight-bold">CONRAD MAKKAH</span>
                                                 </div>
@@ -137,7 +137,7 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                        <br>
+                                        <br> -->
                                         <ul class="list-group">
                                             <li class="list-group-item d-flex justify-content-between align-items-center text-center">
                                                 <div class="col">

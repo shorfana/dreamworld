@@ -139,11 +139,24 @@
     })
 
     arrHotel = []
+    arrQuad = []
+    arrTriple = []
+    arrDouble = []
     $('#selectHotel').on('change', function() {
         var hotelVal = $("#selectHotel").val();
         // console.log(hotelVal)
         while (arrHotel.length > 0) {
             arrHotel.pop();
+            // $("#divHotel").empty()
+        }
+        while (arrQuad.length > 0) {
+            arrQuad.pop()
+        }
+        for (let ih = 0; ih < arrHotel.length; ih++) {
+            // const element = array[ih];
+            // console.log(arrHotel[ih].namaHotel)
+            // $("#divHotel").append('<span>'+ arrHotel[ih].namaKota +'</span>')
+            $("#divHotel").append('<ul class="list-group"><li class="list-group-item list-group-item-info d-flex justify-content-between align-items-center"><div class="col-9"><span class="font-weight-bold">' + arrHotel[ih].namaHotel + '</span></div><div class="col-3 text-right"><small>' + arrHotel[ih].namaKota + '</small></div></li><li class="list-group-item d-flex justify-content-between align-items-center text-center"><div class="col-4"><span> Quad : <b>' + arrHotel[ih].hrgQuad + '</b> </span></div><div class="col-4"><span> Triple : <b>' + arrHotel[ih].hrgTriple + '</b> </span></div><div class="col-4"><span> Double : <b>' + arrHotel[ih].hrgDouble + '</b> </span></div></li></ul><br>');
         }
         for (let i = 0; i < hotelVal.length; i++) {
             idHtl = hotelVal[i]
@@ -166,27 +179,60 @@
                     objHtl.hrgQuad = htlResp.harga_quad;
                     objHtl.hargTriple = htlResp.harga_triple;
                     objHtl.hargDouble = htlResp.harga_double;
-                    objHtl.namaKota = htlResp.nama_kota
-                    arrHotel.push(htlResp)
-                    // console.log(htlResp)
+                    objHtl.namaKota = htlResp.nama_kota;
+                    arrHotel.push(objHtl);
+
+                    const objQuad = new Object()
+                    objQuad.idHotel = htlResp.id_hotel;
+                    objQuad.namaHotel = htlResp.nama_hotel;
+                    objQuad.hrgQuad = htlResp.harga_quad;
+                    objQuad.idKota = htlResp.id_kota;
+                    arrQuad.push(objQuad)
+
+                    const objTriple = new Object()
+                    objTriple.idHotel = htlResp.id_hotel;
+                    objTriple.namaHotel = htlResp.nama_hotel;
+                    objTriple.hrgTriple = htlResp.harga_triple;
+                    objTriple.idKota = htlResp.id_kota;
+                    arrTriple.push(objTriple)
+
+                    const objDouble = new Object()
+                    objDouble.idHotel = htlResp.id_hotel;
+                    objDouble.namaHotel = htlResp.nama_hotel;
+                    objDouble.hrgDouble = htlResp.harga_double;
+                    objDouble.idKota = htlResp.id_kota;
+                    arrDouble.push(objDouble)
+                    // arrQuad.push(htlResp.id_hotel,htlResp.nama_hotel, htlResp.harga_quad)
+                    // arrTriple.push(htlResp.id_hotel,htlResp.nama_hotel, htlResp.harga_triple)
+                    // arrDouble.push(htlResp.id_hotel,htlResp.nama_hotel, htlResp.harga_double)
+                    console.log(arrHotel)
+
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                     alertError()
                 }
             })
+            // console.log(arrQuad)
         }
     })
 
 
     $("#btnTest").click(function() {
-        let busLoc = textServ.indexOf("BUS")
-        if (busLoc > -1) {
-            valServ.splice(busLoc, 1);
-            textServ.splice(busLoc, 1);
+        // let busLoc = textServ.indexOf("BUS")
+        // if (busLoc > -1) {
+        //     valServ.splice(busLoc, 1);
+        //     textServ.splice(busLoc, 1);
+        // }
+        // console.log(textServ)
+        // console.log(valServ)
+        // console.log(arrHotel)
+
+        for (let ih = 0; ih < arrHotel.length; ih++) {
+            // const element = array[ih];
+            // console.log(arrHotel[ih].namaHotel)
+            // $("#divHotel").append('<span>'+ arrHotel[ih].namaKota +'</span>')
+            $("#divHotel").append('<ul class="list-group"><li class="list-group-item list-group-item-info d-flex justify-content-between align-items-center"><div class="col-9"><span class="font-weight-bold">' + arrHotel[ih].namaHotel + '</span></div><div class="col-3 text-right"><small>' + arrHotel[ih].namaKota + '</small></div></li><li class="list-group-item d-flex justify-content-between align-items-center text-center"><div class="col-4"><span> Quad : <b>' + arrHotel[ih].hrgQuad + '</b> </span></div><div class="col-4"><span> Triple : <b>' + arrHotel[ih].hrgTriple + '</b> </span></div><div class="col-4"><span> Double : <b>' + arrHotel[ih].hrgDouble + '</b> </span></div></li></ul><br>');
         }
-        console.log(textServ)
-        console.log(valServ)
-        console.log(arrHotel)
     })
 
     $("#btnHitung").click(function() {
@@ -220,6 +266,13 @@
             console.log(tempVServ)
             console.log(textServ)
             console.log(valServ)
+            // menampilkan data hotel berdasarkan data yang dipilih
+            for (let ih = 0; ih < arrHotel.length; ih++) {
+                // const element = array[ih];
+                console.log(arrHotel[ih].namaHotel)
+                // $("#divHotel").append('<ul class="list-group"><li class="list-group-item list-group-item-info d-flex justify-content-between align-items-center"><div class="col-9"><span class="font-weight-bold">ANWAR MADINAH MOVENPICK</span></div><div class="col-3 text-right"><small>MADINAH</small></div></li><li class="list-group-item d-flex justify-content-between align-items-center text-center"><div class="col-4"><span> Quad : <b>580</b> </span></div><div class="col-4"><span> Triple : <b>580</b> </span></div><div class="col-4"><span> Double : <b>580</b> </span></div></li></ul><br>');
+            }
+
 
             for (let i = 0; i < textServ.length; i++) {
                 $("#listPelayanan").append("<li class='list-group-item noBorder'><span class='float-right'><b>" + valServ[i] + "</b></span>" + textServ[i] + "</li>")
